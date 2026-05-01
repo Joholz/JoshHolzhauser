@@ -6,12 +6,10 @@ import AIShowcase       from '@/components/sections/AIShowcase';
 import HowIWork         from '@/components/sections/HowIWork';
 import WhyJosh          from '@/components/sections/WhyJosh';
 import FinalCTA         from '@/components/sections/FinalCTA';
-import { ScrollNav }    from '@/components/ui/ScrollNav';
 
 export default function Home() {
   return (
     <div>
-      <ScrollNav />
       <Hero />
       <SocialProofBar />
       <ServicesGrid />

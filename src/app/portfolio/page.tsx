@@ -7,7 +7,7 @@ const caseStudies = [
     id: 'leah-renewals',
     tag: 'SaaS · Insurance',
     tagColor: '#10B981',
-    status: 'Live · $20/mo subscriber',
+    status: 'Live · Paying subscriber',
     statusColor: '#10B981',
     title: 'Leah Renewals — Insurance Management System',
     problem:
@@ -15,7 +15,7 @@ const caseStudies = [
     solution:
       'I built a full web application from scratch. It ingests the existing Google Sheets data automatically, organizes renewals into a clean management pipeline with status tracking, and includes a secure client-facing intake form for sensitive banking information. When a client submits the form, an email notification fires immediately. I also built a custom notes and tasks module so the team can annotate records without leaving the app.',
     results: [
-      'Paying subscriber at $20/month on an ongoing retainer',
+      'Live paying subscriber on an ongoing retainer',
       'Hundreds of records imported and organized from Google Sheets',
       'Secure banking intake form replacing insecure email exchanges',
       'Real-time email notifications on form submissions',

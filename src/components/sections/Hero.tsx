@@ -3,32 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Terminal, Zap, Shield } from 'lucide-react';
-import { motion, useReducedMotion } from 'framer-motion';
-
-function ScrollHint() {
-  const rm = useReducedMotion();
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.4, duration: 0.8 }}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#6B7280]"
-    >
-      <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Scroll or press ↓</span>
-      {!rm && (
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-        >
-          <svg viewBox="0 0 16 20" className="w-4 h-5 fill-none stroke-[#6B7280]" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-            <rect x="1" y="1" width="14" height="18" rx="7" />
-            <line x1="8" y1="5" x2="8" y2="9" />
-          </svg>
-        </motion.div>
-      )}
-    </motion.div>
-  );
-}
+import { motion } from 'framer-motion';
 
 const TYPED_STRINGS = [
   'web applications',
@@ -135,8 +110,6 @@ export default function Hero() {
         >
           <Link
             href="/book"
-            data-magnetic
-            data-cursor-label="BOOK"
             className="group flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] text-sm w-full sm:w-auto justify-center"
           >
             Book a Free Discovery Call
@@ -144,8 +117,6 @@ export default function Hero() {
           </Link>
           <Link
             href="/portfolio"
-            data-magnetic
-            data-cursor-label="VIEW"
             className="flex items-center gap-2 text-[#9CA3AF] hover:text-[#F9FAFB] font-medium text-sm transition-colors border border-[#1E2A3A] hover:border-[#3B82F6]/40 px-6 py-3.5 rounded-xl w-full sm:w-auto justify-center"
           >
             See My Work ↓
@@ -175,8 +146,6 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
-
-      <ScrollHint />
     </section>
   );
 }

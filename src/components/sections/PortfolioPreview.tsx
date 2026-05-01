@@ -9,7 +9,7 @@ const projects = [
     title: 'Leah Renewals — Insurance Management System',
     description:
       'A full web application that ingests hundreds of renewal records from Google Sheets, organizes them into a manageable pipeline, and includes a secure client banking intake form with email notifications and a custom notes/tasks system.',
-    wins: ['$20/mo paying subscriber', 'Secure form with email alerts', 'Google Sheets integration', 'Custom notes & tasks module'],
+    wins: ['Live paying subscriber', 'Secure form with email alerts', 'Google Sheets integration', 'Custom notes & tasks module'],
     tech: ['React', 'Vite', 'Google Sheets API', 'Resend'],
     href: '/portfolio#leah-renewals',
   },

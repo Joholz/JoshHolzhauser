@@ -68,7 +68,7 @@ const SCENES: Scene[] = [
       'const roi = computeReturn(leads, cycle);',
       'publishOutcomeReport(roi);',
     ],
-    output: ['$20/mo subscriber validated', 'manual work dropped', 'conversion flow simplified'],
+    output: ['live subscriber validated', 'manual work dropped', 'conversion flow simplified'],
     accent: '#10B981',
   },
 ];

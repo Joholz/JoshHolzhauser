@@ -176,7 +176,7 @@ Each document written by the `/book` contact form:
 
 | ID               | Project            | Status                        | Tech                                 |
 |------------------|--------------------|-------------------------------|--------------------------------------|
-| `#leah-renewals` | Leah Renewals      | Live · $20/mo subscriber      | React, Node.js, Firebase, Sheets API |
+| `#leah-renewals` | Leah Renewals      | Live · Paying subscriber      | React, Node.js, Firebase, Sheets API |
 | `#engler`        | Engler Contracting | Live at englercontracting.com | React, Next.js, Vercel               |
 | `#cookbookpal`   | CookBookPal        | Available on GitHub           | React Native, Expo, Firebase, OpenAI |
 
@@ -230,7 +230,7 @@ git add . && git commit -m "Initial website build" && git push origin main
 - Direct, confident, no fluff
 - "I build X so you don't need a team"
 - Solo developer advantage: speed, full ownership, long-term relationships
-- Lead with real specifics: $20/mo paying subscriber, named client projects, real tech
+- Lead with real specifics: named client projects, real tech, real outcomes
 - CTAs describe the action, not the outcome: "Tell me about your project" not "Start your journey"
 
 ---
@@ -256,7 +256,7 @@ git add . && git commit -m "Initial website build" && git push origin main
 - **Specific beats generic.** "A spreadsheet you're embarrassed by" is better than "existing systems."
 - **Admits constraints.** "I'm one person" is a feature, not a disclaimer.
 - **Has a voice.** Sentences can be short. Fragments are fine. Josh isn't a brochure.
-- **Uses real names and numbers.** Leah Renewals, $20/mo, englercontracting.com — not "a client" or "a business."
+- **Uses real names and numbers.** Leah Renewals, englercontracting.com — not "a client" or "a business."
 - **CTAs describe the action.** "Tell me about your project" > "Book a free discovery call" > "Start your journey."
 
 ### The three-question test — run this before committing any copy

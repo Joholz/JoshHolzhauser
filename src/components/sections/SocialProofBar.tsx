@@ -42,7 +42,7 @@ export default function SocialProofBar() {
 
           <FadeIn delay={0.3}>
             <div className="text-center">
-              <p className="text-2xl font-bold text-[#10B981]">$20<span className="text-sm font-normal">/mo</span></p>
+              <p className="text-2xl font-bold text-[#10B981]">Live</p>
               <p className="text-xs text-[#6B7280] mt-0.5">Paying SaaS subscriber</p>
             </div>
           </FadeIn>
