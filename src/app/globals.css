@@ -104,3 +104,8 @@ body {
   pointer-events: none;
 }
 
+/* Hide system cursor on true pointer devices — MagneticCursor replaces it */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
+

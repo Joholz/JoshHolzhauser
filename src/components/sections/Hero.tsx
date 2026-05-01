@@ -135,6 +135,8 @@ export default function Hero() {
         >
           <Link
             href="/book"
+            data-magnetic
+            data-cursor-label="BOOK"
             className="group flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] text-sm w-full sm:w-auto justify-center"
           >
             Book a Free Discovery Call
@@ -142,6 +144,8 @@ export default function Hero() {
           </Link>
           <Link
             href="/portfolio"
+            data-magnetic
+            data-cursor-label="VIEW"
             className="flex items-center gap-2 text-[#9CA3AF] hover:text-[#F9FAFB] font-medium text-sm transition-colors border border-[#1E2A3A] hover:border-[#3B82F6]/40 px-6 py-3.5 rounded-xl w-full sm:w-auto justify-center"
           >
             See My Work ↓

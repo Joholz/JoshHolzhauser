@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { WebGLSceneClient } from "@/components/ui/WebGLSceneClient";
+import { MagneticCursor } from "@/components/ui/MagneticCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,6 +42,8 @@ export default function RootLayout({
       className={`${inter.variable} ${geistMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-[#0A0E1A] text-[#F9FAFB] antialiased">
+        {/* Custom cursor — replaces system cursor on pointer devices */}
+        <MagneticCursor />
         {/* Global WebGL particle field — fixed behind all content */}
         <WebGLSceneClient className="fixed inset-0 w-full h-full z-0" />
         <Navbar />
