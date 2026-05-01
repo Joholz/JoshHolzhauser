@@ -22,16 +22,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 flex items-center justify-center">
-                <Image
-                  src="/JH_Logo_White.png"
-                  alt="JH"
-                  width={32}
-                  height={32}
-                  className="object-contain"
-                />
-              </div>
+            <div className="flex items-center gap-2">
+              <Image
+                src="/JH_Logo_White.png"
+                alt="JH"
+                width={44}
+                height={44}
+                className="object-contain"
+              />
               <span className="font-bold text-[#F9FAFB]">Josh Holzhauser</span>
             </div>
             <p className="text-sm text-[#6B7280] leading-relaxed">

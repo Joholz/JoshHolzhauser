@@ -45,16 +45,14 @@ export default function Navbar() {
 
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 flex items-center justify-center">
-            <Image
-              src="/JH_Logo_White.png"
-              alt="JH"
-              width={32}
-              height={32}
-              className="object-contain"
-            />
-          </div>
+        <Link href="/" className="flex items-center gap-2 group">
+          <Image
+            src="/JH_Logo_White.png"
+            alt="JH"
+            width={44}
+            height={44}
+            className="object-contain"
+          />
           <span className="font-bold text-[#F9FAFB] tracking-tight">Josh Holzhauser</span>
         </Link>
 

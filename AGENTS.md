@@ -118,7 +118,7 @@ src/
     sections/SocialProofBar.tsx
     sections/ServicesGrid.tsx
     sections/PortfolioPreview.tsx
-    sections/AIShowcase.tsx  ← Scroll-synced “Code-to-Result Timeline” (desktop sticky + mobile tabs + reduced-motion fallback)
+    sections/AIShowcase.tsx  ← Scroll-synced split-view scenes: code panel (typing) left, live preview (UI assembling) right. Three phases (Plan/Build/Result) with progress rail + reduced-motion fallback.
     sections/HowIWork.tsx
     sections/WhyJosh.tsx     ← Comparison table
     sections/FinalCTA.tsx
@@ -220,7 +220,7 @@ git add . && git commit -m "Initial website build" && git push origin main
 - **Server Components by default** — only add `'use client'` when using hooks or browser APIs
 - **`params` is a Promise in Next 16** — must `await params` in dynamic routes
 - **Framer Motion `ease` arrays** need explicit `as [number,number,number,number]` cast
-- **AIShowcase** is a scroll-synced narrative system (desktop sticky timeline, mobile chapter toggles, reduced-motion static cards) with no external AI APIs called
+- **AIShowcase** is a scroll-synced split-view: a fake code editor on the left types out source while a live preview on the right assembles the matching UI piece-by-piece. Three phases (Plan / Build / Result) on a sticky stage with a progress rail. Mobile stacks the two panels vertically and shrinks the code editor. Reduced-motion users get a static three-card fallback. No external AI APIs called.
 - **Admin route** is not protected at the routing level — Firebase Auth on the client handles access. For a low-traffic personal site this is sufficient.
 
 ---
