@@ -103,7 +103,7 @@ function CodePanel({
   const [revealed, setRevealed] = useState(0);
 
   useMotionValueEvent(progress, 'change', (v) => {
-    const target = Math.min(lines.length, Math.ceil((Math.min(0.45, v) / 0.45) * lines.length));
+    const target = Math.min(lines.length, Math.ceil((Math.min(0.35, v) / 0.35) * lines.length));
     setRevealed((prev) => (prev === target ? prev : target));
   });
 
@@ -158,7 +158,7 @@ function PlanPreview({ progress }: { progress: MotionValue<number> }) {
   ];
   const [step, setStep] = useState(0);
   useMotionValueEvent(progress, 'change', (v) => {
-    const t = Math.max(0, Math.min(1, (v - 0.4) / 0.45));
+    const t = Math.max(0, Math.min(1, (v - 0.25) / 0.4));
     const target = Math.floor(t * (items.length + 1));
     setStep((prev) => (prev === target ? prev : target));
   });
@@ -213,7 +213,7 @@ function PlanPreview({ progress }: { progress: MotionValue<number> }) {
 function BuildPreview({ progress }: { progress: MotionValue<number> }) {
   const [stage, setStage] = useState(0);
   useMotionValueEvent(progress, 'change', (v) => {
-    const t = Math.max(0, Math.min(1, (v - 0.3) / 0.6));
+    const t = Math.max(0, Math.min(1, (v - 0.2) / 0.5));
     const target = Math.floor(t * 7);
     setStage((prev) => (prev === target ? prev : target));
   });
@@ -328,13 +328,13 @@ function BuildPreview({ progress }: { progress: MotionValue<number> }) {
 // --- preview: results -------------------------------------------------------
 
 function ResultsPreview({ progress }: { progress: MotionValue<number> }) {
-  const conversionMV = useTransform(progress, [0.25, 0.7], [0, 48]);
-  const loadMV       = useTransform(progress, [0.3, 0.7],  [3.4, 1.2]);
-  const bounceMV     = useTransform(progress, [0.35, 0.75], [62, 28]);
-  const chartMV      = useTransform(progress, [0.4, 0.95], [1, 0]);
-  const badgeOp      = useTransform(progress, [0.85, 0.97], [0, 1]);
-  const badgeScale   = useTransform(progress, [0.85, 0.97], [0.85, 1]);
-  const areaOp       = useTransform(progress, [0.55, 0.95], [0, 0.45]);
+  const conversionMV = useTransform(progress, [0.15, 0.5], [0, 48]);
+  const loadMV       = useTransform(progress, [0.2, 0.5],  [3.4, 1.2]);
+  const bounceMV     = useTransform(progress, [0.25, 0.55], [62, 28]);
+  const chartMV      = useTransform(progress, [0.3, 0.65], [1, 0]);
+  const badgeOp      = useTransform(progress, [0.6, 0.72], [0, 1]);
+  const badgeScale   = useTransform(progress, [0.6, 0.72], [0.85, 1]);
+  const areaOp       = useTransform(progress, [0.4, 0.65], [0, 0.45]);
 
   const [conv, setConv]     = useState(0);
   const [load, setLoad]     = useState(3.4);
@@ -595,7 +595,7 @@ export default function AIShowcase() {
         <Header />
       </div>
 
-      <div ref={trackRef} className="relative mt-12 h-[260vh] md:h-[300vh]">
+      <div ref={trackRef} className="relative mt-12 h-[320vh] md:h-[360vh]">
         <div className="sticky top-0 flex h-screen items-center">
           <div className="mx-auto w-full max-w-5xl">
             <ProgressRail scrollProgress={smooth} phaseIndex={phase} />
