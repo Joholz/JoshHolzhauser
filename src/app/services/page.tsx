@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { FadeIn, Stagger, StaggerItem } from '@/components/ui/FadeIn';
+import { PricingEstimator } from '@/components/sections/PricingEstimator';
 
 const tiers = [
   {
@@ -81,7 +82,7 @@ const tiers = [
     type: 'One-time + optional retainer',
     color: '#F59E0B',
     description:
-      'From concept to launched SaaS product with real users. I build the whole thing — frontend, backend, payments, auth.',
+      'I build the whole thing — frontend, backend, payments, auth. You get a product that can acquire real users on day one.',
     features: [
       'Full-stack SaaS architecture',
       'Auth & user management',
@@ -118,7 +119,15 @@ export default function ServicesPage() {
           </p>
         </FadeIn>
 
+        {/* Estimator */}
+        <PricingEstimator />
+
         {/* Tiers */}
+        <FadeIn className="mb-8">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#6B7280]">Or pick a package below</p>
+        </FadeIn>
+
+        {/* Tiers grid */}
         <Stagger className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {tiers.map(({ name, price, type, color, description, features, cta, highlight }) => (
             <StaggerItem key={name}>

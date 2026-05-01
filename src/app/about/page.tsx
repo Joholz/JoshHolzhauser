@@ -8,12 +8,8 @@ const GithubIcon = () => (
   </svg>
 );
 import { FadeIn, Stagger, StaggerItem } from '@/components/ui/FadeIn';
-
-const skills = [
-  { category: 'Frontend',   items: ['React', 'Next.js', 'React Native', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
-  { category: 'Backend',    items: ['Node.js', 'Firebase', 'REST APIs', 'Google APIs', 'Resend', 'Vite'] },
-  { category: 'AI & Tools', items: ['AI/LLM Integration', 'Web Scraping', 'Workflow Automation', 'GitHub', 'Vercel', 'Expo'] },
-];
+import { SkillsGraph } from '@/components/sections/SkillsGraph';
+import { BuildLog } from '@/components/sections/BuildLog';
 
 const values = [
   { icon: Code2, title: 'I own the entire build',    desc: 'No handoffs between design, dev, and QA. I take it from concept to deployed — faster and with fewer broken phones.' },
@@ -120,27 +116,16 @@ export default function AboutPage() {
           ))}
         </Stagger>
 
-        {/* Skills */}
-        <FadeIn>
-          <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">Technical Stack</p>
-          <h2 className="text-3xl font-bold text-[#F9FAFB] mb-10">What I build with</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {skills.map(({ category, items }) => (
-              <div key={category} className="bg-[#111827] border border-[#1E2A3A] rounded-2xl p-7">
-                <h3 className="text-sm font-semibold text-[#F9FAFB] mb-4">{category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {items.map(item => (
-                    <span
-                      key={item}
-                      className="text-xs font-mono bg-[#1a2332] border border-[#1E2A3A] text-[#6B7280] px-2.5 py-1 rounded-md"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Skills — animated */}
+        <FadeIn className="mb-10">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#3B82F6]">Technical Stack</p>
+          <h2 className="mb-10 text-3xl font-bold text-[#F9FAFB]">Stack I trust in production</h2>
+          <SkillsGraph />
+        </FadeIn>
+
+        {/* Build Log */}
+        <FadeIn className="mt-20">
+          <BuildLog />
         </FadeIn>
       </div>
     </div>

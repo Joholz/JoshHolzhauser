@@ -7,14 +7,29 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ---
 
 # agents.md — Project Brain
-> Reference this file at the start of every AI coding session on this project.
+
+> **This is the single source of truth for every AI coding session on this project.**
+> Read it fully before touching a file. Update it whenever something changes — architecture, decisions, copy rules, pending tasks. An outdated agents.md causes drift. Keeping it current is as important as keeping the code clean.
+> **Last updated: 2026-05-01**
+
+---
+
+## 0. How to Use This File
+
+- **Before starting any session:** read sections 1–7 to orient yourself
+- **Before writing any copy:** read section 8 (Brand Voice) and section 9 (Anti-AI-Slop Rules)
+- **After completing any meaningful change:** update the relevant section here — file structure, decisions log, pending tasks
+- **This is not optional.** Stale context produces stale output.
 
 ---
 
 ## 1. Purpose
+
 Personal brand + SaaS showcase website for **Josh Holzhauser**.
+Core MO: **we build everything ourselves. No third-party embeds, no iframe dependencies, no outsourcing UX to other platforms.**
+
 Goals (in priority order):
-1. Convert visitors → booked discovery calls (Cal.com)
+1. Convert visitors → submitted contact requests (Firebase-backed, custom-built)
 2. Establish Josh as a capable, trusted solo developer
 3. Showcase real products in production
 4. Zero ongoing hosting cost
@@ -25,17 +40,26 @@ Live URL (target): `https://joshholzhauser.vercel.app`
 
 ## 2. Tech Stack
 
-| Layer          | Choice                         | Notes                               |
-|----------------|-------------------------------|-------------------------------------|
-| Framework      | Next.js 16.2.4 (App Router)   | TypeScript, `src/` dir, `@/*` alias |
-| Styling        | Tailwind CSS 4                | CSS-first — config in `globals.css` |
-| Animation      | Framer Motion ^12             | `useInView` for scroll triggers     |
-| Icons          | lucide-react (v1.x)           | No brand icons — use inline SVG     |
-| Hosting        | Vercel Hobby (free)           |                                     |
-| Booking        | Cal.com (free)                | iframe embed at `/book`             |
-| Analytics      | Vercel Analytics (free)       | Add in Vercel dashboard             |
-| Email (future) | Resend (3k/mo free)           |                                     |
-| CRM (future)   | HubSpot free tier             |                                     |
+| Layer       | Choice                        | Notes                                        |
+|-------------|------------------------------|----------------------------------------------|
+| Framework   | Next.js 16.2.4 (App Router)  | TypeScript, `src/` dir, `@/*` alias          |
+| Styling     | Tailwind CSS 4               | CSS-first — config in `globals.css`          |
+| Animation   | Framer Motion ^12            | `useInView` for scroll triggers              |
+| Icons       | lucide-react (v1.x)          | No brand icons — use inline SVG              |
+| Database    | Firebase Firestore           | Project: `joshholzhauser-3a74c`              |
+| Auth        | Firebase Auth (Google)       | Admin-only — `wunkoteam@gmail.com`           |
+| Hosting     | Vercel Hobby (free)          |                                              |
+| Analytics   | Vercel Analytics (free)      | Enable in Vercel dashboard                   |
+| Email (future) | Resend (3k/mo free)       |                                              |
+
+### No third-party booking embeds
+Cal.com was evaluated and rejected. The `/book` page is a **custom 3-step contact form** that writes directly to Firestore. We own the UX. We own the data.
+
+### Firebase project
+- Project ID: `joshholzhauser-3a74c`
+- App ID: `1:513711576279:web:edc42f01945542c9974c92`
+- Admin email: `wunkoteam@gmail.com`
+- Config lives in `.env.local` (not committed) and must be added to Vercel environment variables before deploy
 
 ### Critical Tailwind 4 rule
 No `tailwind.config.js`. All tokens live in `globals.css` inside `@theme inline {}`.
@@ -79,87 +103,163 @@ Utility classes (defined in `globals.css`):
 ```
 src/
   app/
-    globals.css            ← design tokens + keyframes
-    layout.tsx             ← root layout: Navbar + Footer + metadata
-    page.tsx               ← Home (8 sections)
-    about/page.tsx
-    book/page.tsx          ← Cal.com iframe
-    portfolio/page.tsx     ← 3 case studies with #anchors
-    services/page.tsx      ← 5 pricing tiers
+    globals.css              ← design tokens + keyframes
+    layout.tsx               ← root layout: Navbar + Footer + metadata
+    page.tsx                 ← Home (8 sections)
+    about/page.tsx           ← Story, headshot, values, tech stack
+    admin/page.tsx           ← Lead dashboard (Google Auth protected)
+    book/page.tsx            ← Custom 3-step contact form → Firestore
+    portfolio/page.tsx       ← 3 case studies with #anchors
+    services/page.tsx        ← 5 pricing tiers
   components/
-    layout/Navbar.tsx
-    layout/Footer.tsx
-    sections/Hero.tsx
+    layout/Navbar.tsx        ← Sticky, scroll-aware, mobile hamburger
+    layout/Footer.tsx        ← 3-col: brand + nav + CTA; inline SVG social icons
+    sections/Hero.tsx        ← Typewriter, dual CTA, trust anchors
     sections/SocialProofBar.tsx
     sections/ServicesGrid.tsx
     sections/PortfolioPreview.tsx
-    sections/AIShowcase.tsx
+    sections/AIShowcase.tsx  ← Scroll-synced “Code-to-Result Timeline” (desktop sticky + mobile tabs + reduced-motion fallback)
     sections/HowIWork.tsx
-    sections/WhyJosh.tsx
+    sections/WhyJosh.tsx     ← Comparison table
     sections/FinalCTA.tsx
-    ui/FadeIn.tsx          ← FadeIn, Stagger, StaggerItem
-  lib/utils.ts             ← cn() helper
+    ui/FadeIn.tsx            ← FadeIn, Stagger, StaggerItem
+  lib/
+    firebase.ts              ← Firebase app + Firestore export
+    utils.ts                 ← cn() helper (clsx + tailwind-merge)
 public/
-  engler-logo.png          ← Engler Contracting ECC logo
-  headshot.jpg             ← Josh headshot (needs solo crop)
+  engler-logo.png            ← Engler Contracting ECC logo
+  headshot.jpg               ← Josh headshot (needs solo crop)
+firestore.rules              ← Security rules (deploy with firebase CLI)
+firestore.indexes.json
+firebase.json
+.env.local                   ← Firebase config (not committed)
 ```
 
 ---
 
-## 5. Portfolio Projects
+## 5. Firebase Architecture
 
-| ID               | Project           | Status                     | Tech                                  |
-|------------------|-------------------|----------------------------|---------------------------------------|
-| `#leah-renewals` | Leah Renewals     | Live · $20/mo subscriber   | React, Node.js, Firebase, Sheets API  |
-| `#engler`        | Engler Contracting| Live at englercontracting.com | React, Next.js, Vercel             |
-| `#cookbookpal`   | CookBookPal       | Available on GitHub        | React Native, Expo, Firebase, OpenAI  |
+### Firestore collection: `leads`
+Each document written by the `/book` contact form:
+```ts
+{
+  name:        string,   // required
+  email:       string,   // required, lowercased
+  projectType: string,   // 'website' | 'app' | 'automation' | 'mobile' | 'saas' | 'unsure'
+  message:     string,   // required
+  budget:      string,   // 'under1k' | '1k-3k' | '3k-7k' | '7k+' | 'unsure'
+  timeline:    string,   // 'asap' | '1-3mo' | 'flexible'
+  extra:       string,   // optional
+  status:      'new' | 'contacted' | 'closed',
+  createdAt:   Timestamp,
+}
+```
+
+### Security rules
+- **Write (create):** anyone — required fields validated server-side by Firestore rules
+- **Read/update:** only `wunkoteam@gmail.com` via Google Auth
+- Rules file: `firestore.rules` — deploy with `firebase deploy --only firestore:rules --project joshholzhauser-3a74c`
+
+### Admin dashboard (`/admin`)
+- Sign in with Google (`wunkoteam@gmail.com`)
+- Shows all leads sorted newest-first, with status badges, expand-to-read, and one-click status updates
+- Not linked from the public nav — access directly at `/admin`
+
+### Required Firebase Console setup (one-time)
+1. Firestore Database → Create database → production mode → pick region
+2. Authentication → Sign-in method → Google → Enable → save `wunkoteam@gmail.com` as support email
+3. Run: `firebase deploy --only firestore:rules --project joshholzhauser-3a74c`
 
 ---
 
-## 6. Pending Setup Tasks
+## 6. Portfolio Projects
 
-### Cal.com (REQUIRED before launch)
-1. Create account at `cal.com`
-2. Create "Discovery Call" event (30 min, Google Meet)
-3. Update iframe `src` in `src/app/book/page.tsx` with your username URL
+| ID               | Project            | Status                        | Tech                                 |
+|------------------|--------------------|-------------------------------|--------------------------------------|
+| `#leah-renewals` | Leah Renewals      | Live · $20/mo subscriber      | React, Node.js, Firebase, Sheets API |
+| `#engler`        | Engler Contracting | Live at englercontracting.com | React, Next.js, Vercel               |
+| `#cookbookpal`   | CookBookPal        | Available on GitHub           | React Native, Expo, Firebase, OpenAI |
+
+---
+
+## 7. Pending Tasks
+
+### Before deploy
+- [ ] Complete Firebase Console setup (Firestore + Auth — see section 5)
+- [ ] Add `.env.local` variables to Vercel environment variables
+- [ ] Replace `/public/headshot.jpg` with solo cropped photo
+- [ ] Update Footer LinkedIn URL (currently `https://linkedin.com` placeholder)
 
 ### Deployment
 ```bash
 git add . && git commit -m "Initial website build" && git push origin main
-# Connect repo at vercel.com → auto-detects Next.js → deploy
+# Connect repo at vercel.com → import project → auto-detects Next.js → deploy
+# Add all NEXT_PUBLIC_FIREBASE_* vars in Vercel project settings → Environment Variables
 ```
 
-### Assets
-- Replace `/public/headshot.jpg` with solo cropped photo
-- Update Footer LinkedIn URL (currently placeholder `https://linkedin.com`)
-
 ### Future features
+- [x] Signature Home timeline in `src/components/sections/AIShowcase.tsx` (implemented 2026-05-01)
+- [ ] Services page interactive estimator in `src/app/services/page.tsx`
+- [ ] About page capability visualization in `src/app/about/page.tsx`
 - [ ] `src/app/not-found.tsx` — custom 404
 - [ ] `src/app/sitemap.ts` + `robots.ts` — SEO
-- [ ] Contact form with Resend
+- [ ] Email notification when a new lead is submitted (Resend, 3k/mo free)
 - [ ] Blog with MDX
-- [ ] Vercel Analytics (enable in dashboard)
+- [ ] Vercel Analytics (enable in Vercel dashboard)
 - [ ] Google Analytics 4
-- [ ] HubSpot CRM free
+- [ ] LinkedIn URL for Footer
 
 ---
 
-## 7. Key Decisions
+## 8. Key Technical Decisions
 
-- Tailwind 4 = CSS-only config, no `tailwind.config.js`
-- lucide v1.x removed brand icons → always use inline SVG
-- Server Components by default, `'use client'` only for hooks
-- `params` is a Promise in Next 16 — must `await params` in dynamic routes
-- Framer Motion `ease` arrays need explicit tuple cast
-- AIShowcase terminal is pure animation — no external AI APIs called
-- Vercel Hobby free tier, Cal.com free tier
+- **No third-party booking tools** — we build our own contact flow, we own the data
+- **Firebase for leads** — Firestore + Google Auth, no backend server needed
+- **Tailwind 4** = CSS-only config, no `tailwind.config.js`
+- **lucide v1.x removed brand icons** → always use inline SVG for GitHub, LinkedIn, Twitter
+- **Server Components by default** — only add `'use client'` when using hooks or browser APIs
+- **`params` is a Promise in Next 16** — must `await params` in dynamic routes
+- **Framer Motion `ease` arrays** need explicit `as [number,number,number,number]` cast
+- **AIShowcase** is a scroll-synced narrative system (desktop sticky timeline, mobile chapter toggles, reduced-motion static cards) with no external AI APIs called
+- **Admin route** is not protected at the routing level — Firebase Auth on the client handles access. For a low-traffic personal site this is sufficient.
 
 ---
 
-## 8. Brand Voice
+## 9. Brand Voice
 
-- Direct, confident, zero fluff
+- Direct, confident, no fluff
 - "I build X so you don't need a team"
-- Solo advantage: speed, full ownership, long-term relationships
-- Real numbers: $20/mo paying subscriber, deployed client sites
-- Honest: "minimal briefing", "no commitment discovery call"
+- Solo developer advantage: speed, full ownership, long-term relationships
+- Lead with real specifics: $20/mo paying subscriber, named client projects, real tech
+- CTAs describe the action, not the outcome: "Tell me about your project" not "Start your journey"
+
+---
+
+## 10. Anti-AI-Slop Rules
+
+**Read this before writing any copy.** Visitors recognise AI-generated text immediately — it reads like a template, not a person. Every session must check new copy against these rules before it ships.
+
+### Banned phrases and patterns
+| Pattern | Why it's banned |
+|---|---|
+| `"Real [X] · Real [Y] · Real [Z]"` | Triple parallel constructions are ChatGPT's default |
+| `"No [X]. No [Y]. Just [Z]."` | The freelancer-template closer — appears on thousands of sites |
+| `"Ready to [verb] your [noun]?"` | Generic CTA headline — means nothing |
+| `"From concept to [deployed/launched/live]"` | Every AI writes this exact phrase |
+| `"AI-powered"`, `"seamless"`, `"robust"`, `"leverage"`, `"streamlined"`, `"cutting-edge"` | Banned words — delete on sight |
+| `"[noun] that [verb]. [thing], [thing], [thing]."` | Service card formula — rewrite with a point of view |
+| `small uppercase label → h2 → gray subtitle` on every single section | Rotating or dropping the subtitle is fine; repeating the identical structure on every section is not |
+| `"Real problems. Real solutions."` | Meaningless rhyming pair |
+| `"[adj] · [adj] · [adj] capability"` | Tag stacking with no substance |
+
+### What good copy looks like on this site
+- **Specific beats generic.** "A spreadsheet you're embarrassed by" is better than "existing systems."
+- **Admits constraints.** "I'm one person" is a feature, not a disclaimer.
+- **Has a voice.** Sentences can be short. Fragments are fine. Josh isn't a brochure.
+- **Uses real names and numbers.** Leah Renewals, $20/mo, englercontracting.com — not "a client" or "a business."
+- **CTAs describe the action.** "Tell me about your project" > "Book a free discovery call" > "Start your journey."
+
+### The three-question test — run this before committing any copy
+1. Could this exact sentence appear on 10,000 other developer portfolio sites? If yes, rewrite it.
+2. Does it sound like a person talking, or a template with blanks filled in?
+3. Is there a specific detail — a number, a project name, a real constraint — that could replace a vague claim?
