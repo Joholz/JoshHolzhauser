@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Code2 } from 'lucide-react';
+import Image from 'next/image';
 
 const GithubIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
@@ -22,9 +22,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#3B82F6] rounded-lg flex items-center justify-center">
-                <Code2 className="w-4 h-4 text-white" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 flex items-center justify-center">
+                <Image
+                  src="/JH_Logo_White.png"
+                  alt="JH"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
               </div>
               <span className="font-bold text-[#F9FAFB]">Josh Holzhauser</span>
             </div>

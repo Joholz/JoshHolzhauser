@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Code2 } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
@@ -44,9 +45,15 @@ export default function Navbar() {
 
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 bg-[#3B82F6] rounded-lg flex items-center justify-center group-hover:bg-[#2563EB] transition-colors">
-            <Code2 className="w-4 h-4 text-white" />
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 flex items-center justify-center">
+            <Image
+              src="/JH_Logo_White.png"
+              alt="JH"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
           </div>
           <span className="font-bold text-[#F9FAFB] tracking-tight">Josh Holzhauser</span>
         </Link>
