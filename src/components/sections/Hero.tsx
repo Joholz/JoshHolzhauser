@@ -3,7 +3,32 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Terminal, Zap, Shield } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+
+function ScrollHint() {
+  const rm = useReducedMotion();
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.4, duration: 0.8 }}
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#6B7280]"
+    >
+      <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Scroll or press ↓</span>
+      {!rm && (
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+        >
+          <svg viewBox="0 0 16 20" className="w-4 h-5 fill-none stroke-[#6B7280]" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+            <rect x="1" y="1" width="14" height="18" rx="7" />
+            <line x1="8" y1="5" x2="8" y2="9" />
+          </svg>
+        </motion.div>
+      )}
+    </motion.div>
+  );
+}
 
 const TYPED_STRINGS = [
   'web applications',
@@ -48,10 +73,21 @@ function Typewriter() {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg pt-16">
-      {/* Radial glow */}
+    <section
+      className="relative flex items-center justify-center overflow-hidden pt-16"
+      style={{ minHeight: '100dvh' }}
+    >
+      {/* Vignette overlay — improves text readability over the global WebGL scene */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 90% 80% at 50% 50%, transparent 20%, rgba(10,14,26,0.65) 100%)',
+        }}
+      />
+      {/* Soft blue centre glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[800px] h-[600px] bg-[#3B82F6]/5 rounded-full blur-[120px]" />
+        <div className="w-[700px] h-[500px] bg-[#3B82F6]/6 rounded-full blur-[140px]" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6 py-24 text-center">
@@ -135,6 +171,8 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
+
+      <ScrollHint />
     </section>
   );
 }

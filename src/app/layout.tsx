@@ -4,6 +4,7 @@ import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { WebGLSceneClient } from "@/components/ui/WebGLSceneClient";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,8 +41,10 @@ export default function RootLayout({
       className={`${inter.variable} ${geistMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-[#0A0E1A] text-[#F9FAFB] antialiased">
+        {/* Global WebGL particle field — fixed behind all content */}
+        <WebGLSceneClient className="fixed inset-0 w-full h-full z-0" />
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
         <Footer />
       </body>
     </html>
