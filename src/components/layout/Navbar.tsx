@@ -49,9 +49,9 @@ export default function Navbar() {
           <Image
             src="/JH_Logo_White.png"
             alt="JH"
-            width={44}
-            height={44}
-            className="object-contain"
+            width={48}
+            height={48}
+            className="object-contain shrink-0"
           />
           <span className="font-bold text-[#F9FAFB] tracking-tight">Josh Holzhauser</span>
         </Link>
