@@ -1,135 +1,169 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
-  AnimatePresence,
   motion,
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
-  useTransform,
 } from 'framer-motion';
+import { Check, Zap, TrendingUp } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
 
-type Scene = {
+type Phase = {
   id: string;
-  label: string;
+  number: string;
   title: string;
-  detail: string;
-  impact: string;
-  code: string[];
-  output: string[];
-  accent: string;
+  problem: string;
+  solution: string;
+  outcome: string;
+  icon: React.ReactNode;
+  accentColor: string;
+  bgColor: string;
 };
 
-const SCENES: Scene[] = [
+const PHASES: Phase[] = [
   {
     id: 'brief',
-    label: '01 BRIEF',
-    title: 'Unstructured request turns into a build map.',
-    detail:
-      'You give me a messy brief, I turn it into a concrete execution path with a clear finish line.',
-    impact: 'No guesswork: defined phases, fixed priorities, and fewer expensive rewrites.',
-    code: [
-      'const brief = collectClientConstraints();',
-      'const priorities = rankByBusinessImpact(brief.goals);',
-      'const milestones = planMilestones(priorities, 3);',
-      'return createRoadmap(milestones);',
-    ],
-    output: ['constraints parsed', '3 milestone track generated', 'delivery plan approved'],
-    accent: '#3B82F6',
+    number: '01',
+    title: 'Requirements & Timeline',
+    problem: 'You have an idea. Unclear scope, unclear timeline, unclear cost.',
+    solution: 'I translate your concept into a prioritized roadmap with fixed phases and realistic estimates.',
+    outcome: "You know exactly what you're getting, when you'll have it, and what it costs.",
+    icon: <Check className="h-5 w-5" />,
+    accentColor: '#3B82F6',
+    bgColor: '#3B82F6',
   },
   {
     id: 'build',
-    label: '02 BUILD',
-    title: 'Execution moves like product engineering, not agency handoffs.',
-    detail:
-      'Component systems, typed boundaries, and iteration loops happen in hours, not week-long status meetings.',
-    impact: 'You see progress daily with working software, not slide decks.',
-    code: [
-      "const section = composeSection({ motion: 'story', perfBudget: 'strict' });",
-      'runTypeChecks(section);',
-      'runSmokeTests(section);',
-      'deployPreview(section);',
-    ],
-    output: ['types passing', 'tests green', 'preview URL ready for review'],
-    accent: '#06B6D4',
+    number: '02',
+    title: 'Working Software Weekly',
+    problem: "You're waiting for the big reveal after months of development.",
+    solution: 'Every week you see running software—not mockups, not promises. Sprints, demos, feedback loops, deploy previews.',
+    outcome: "You steer the product as it's being built instead of trying to change it after launch.",
+    icon: <Zap className="h-5 w-5" />,
+    accentColor: '#06B6D4',
+    bgColor: '#06B6D4',
   },
   {
     id: 'result',
-    label: '03 RESULT',
-    title: 'Shipping produces measurable outcomes, not just pretty screens.',
-    detail:
-      'Every release closes a business loop: cleaner workflows, faster operations, and clearer conversion paths.',
-    impact: 'The product starts paying for itself quickly because the implementation is tied to real decisions.',
-    code: [
-      'const leads = trackInboundLeads(window30d);',
-      'const cycle = compareDeliveryTime(before, after);',
-      'const roi = computeReturn(leads, cycle);',
-      'publishOutcomeReport(roi);',
-    ],
-    output: ['live subscriber validated', 'manual work dropped', 'conversion flow simplified'],
-    accent: '#10B981',
+    number: '03',
+    title: 'Measurable Results',
+    problem: 'The website is live. But is it actually helping your business?',
+    solution: 'Every feature is tied to a real business goal: faster workflows, clearer customer paths, lower operational costs.',
+    outcome: 'You have proof that the product is earning back its investment quickly.',
+    icon: <TrendingUp className="h-5 w-5" />,
+    accentColor: '#10B981',
+    bgColor: '#10B981',
   },
 ];
 
-function SceneDisplay({ scene }: { scene: Scene }) {
+function PhaseCard({ phase, isActive, scrollProgress }: { phase: Phase; isActive: boolean; scrollProgress: number }) {
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={scene.id}
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-        className="relative overflow-hidden rounded-2xl border border-[#1E2A3A] bg-[#0A0E1A]"
-      >
-        <div
-          className="absolute inset-x-0 top-0 h-px"
+    <motion.div
+      className="relative rounded-2xl border border-[#1E2A3A] bg-[#111827]/60 p-6 transition-all duration-300 md:p-8"
+      animate={{
+        borderColor: isActive ? phase.accentColor : '#1E2A3A',
+        backgroundColor: isActive ? `${phase.bgColor}08` : '#111827/60',
+        boxShadow: isActive ? `0 0 24px ${phase.accentColor}20` : 'none',
+      }}
+    >
+      {/* Top accent bar */}
+      <div
+        className="absolute inset-x-0 top-0 h-1 rounded-t-2xl"
+        style={{
+          background: isActive
+            ? `linear-gradient(90deg, ${phase.accentColor} 0%, ${phase.accentColor}40 100%)`
+            : 'transparent',
+        }}
+      />
+
+      {/* Phase number */}
+      <div className="mb-4 flex items-center gap-3">
+        <span
+          className="flex h-10 w-10 items-center justify-center rounded-full"
           style={{
-            background: `linear-gradient(90deg, transparent 0%, ${scene.accent} 50%, transparent 100%)`,
+            backgroundColor: phase.accentColor,
+            opacity: isActive ? 1 : 0.5,
           }}
-        />
-        <div className="flex items-center gap-2 border-b border-[#1E2A3A] bg-[#111827] px-4 py-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#EF4444]/80" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#F59E0B]/80" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#10B981]/80" />
-          <span className="ml-2 font-mono text-xs text-[#6B7280]">build-session.ts</span>
+        >
+          <span className="text-sm font-bold text-white">{phase.number}</span>
+        </span>
+        <span
+          className="text-xs font-semibold uppercase tracking-widest transition-opacity"
+          style={{ color: phase.accentColor, opacity: isActive ? 1 : 0.6 }}
+        >
+          {phase.title}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="space-y-4">
+        <div>
+          <p className="text-sm leading-relaxed text-[#9CA3AF]">{phase.problem}</p>
         </div>
 
-        <div className="grid gap-0 md:grid-cols-[1.25fr_1fr]">
-          <div className="space-y-2 border-b border-[#1E2A3A] p-5 md:border-b-0 md:border-r">
-            {scene.code.map((line, index) => (
-              <div key={line} className="font-mono text-sm leading-relaxed text-[#9CA3AF]">
-                <span className="mr-3 text-[#6B7280]">{String(index + 1).padStart(2, '0')}</span>
-                {line}
+        {isActive && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3 border-t border-[#1E2A3A] pt-4"
+          >
+            <div>
+              <p className="text-sm font-semibold text-[#E5E7EB]">{phase.solution}</p>
+            </div>
+            <div className="flex items-start gap-3 rounded-lg bg-[#0A0E1A]/50 p-3">
+              <div className="mt-0.5 flex-shrink-0" style={{ color: phase.accentColor }}>
+                {phase.icon}
               </div>
-            ))}
-          </div>
-          <div className="space-y-2 p-5">
-            <p className="mb-3 font-mono text-xs uppercase tracking-wider text-[#6B7280]">Runtime Output</p>
-            {scene.output.map((item) => (
-              <div key={item} className="flex items-center gap-2 text-sm text-[#D1FAE5]">
-                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: scene.accent }} />
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    </AnimatePresence>
+              <p className="text-sm text-[#D1D5DB]">{phase.outcome}</p>
+            </div>
+          </motion.div>
+        )}
+      </div>
+
+      {/* Progress indicator */}
+      {isActive && (
+        <motion.div
+          className="absolute -bottom-12 left-1/2 h-6 w-1 -translate-x-1/2"
+          style={{
+            background: phase.accentColor,
+            opacity: Math.min(1, scrollProgress * 3),
+          }}
+        />
+      )}
+    </motion.div>
   );
 }
 
 function ReducedMotionLayout() {
   return (
-    <div className="mt-10 grid gap-5 lg:grid-cols-3">
-      {SCENES.map((scene) => (
-        <div key={scene.id} className="rounded-2xl border border-[#1E2A3A] bg-[#111827]/60 p-5">
-          <p className="mb-3 font-mono text-xs tracking-wider text-[#6B7280]">{scene.label}</p>
-          <h3 className="mb-3 text-lg font-semibold text-[#F9FAFB]">{scene.title}</h3>
-          <p className="mb-4 text-sm leading-relaxed text-[#9CA3AF]">{scene.detail}</p>
-          <p className="text-sm text-[#E5E7EB]">{scene.impact}</p>
+    <div className="mt-10 space-y-4">
+      {PHASES.map((phase) => (
+        <div key={phase.id} className="rounded-2xl border border-[#1E2A3A] bg-[#111827]/60 p-6">
+          <div className="mb-4 flex items-center gap-3">
+            <span
+              className="flex h-10 w-10 items-center justify-center rounded-full"
+              style={{ backgroundColor: phase.accentColor }}
+            >
+              <span className="text-sm font-bold text-white">{phase.number}</span>
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: phase.accentColor }}>
+              {phase.title}
+            </span>
+          </div>
+          <div className="space-y-3">
+            <p className="text-sm leading-relaxed text-[#9CA3AF]">{phase.problem}</p>
+            <p className="text-sm font-semibold text-[#E5E7EB]">{phase.solution}</p>
+            <div className="flex items-start gap-3 rounded-lg bg-[#0A0E1A]/50 p-3">
+              <div className="mt-0.5 flex-shrink-0" style={{ color: phase.accentColor }}>
+                {phase.icon}
+              </div>
+              <p className="text-sm text-[#D1D5DB]">{phase.outcome}</p>
+            </div>
+          </div>
         </div>
       ))}
     </div>
@@ -139,23 +173,19 @@ function ReducedMotionLayout() {
 export default function AIShowcase() {
   const prefersReducedMotion = useReducedMotion();
   const trackRef = useRef<HTMLDivElement>(null);
-  const [activeScene, setActiveScene] = useState(0);
+  const [activePhase, setActivePhase] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: trackRef,
     offset: ['start start', 'end end'],
   });
 
-  const progressHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     if (prefersReducedMotion) return;
-    const sceneSize = 1 / SCENES.length;
-    const next = Math.min(SCENES.length - 1, Math.floor(latest / sceneSize));
-    setActiveScene((prev) => (prev === next ? prev : next));
+    const phaseSize = 1 / PHASES.length;
+    const next = Math.min(PHASES.length - 1, Math.floor(latest / phaseSize));
+    setActivePhase((prev) => (prev === next ? prev : next));
   });
-
-  const currentScene = useMemo(() => SCENES[activeScene], [activeScene]);
 
   return (
     <section className="relative px-6 py-24">
@@ -164,90 +194,63 @@ export default function AIShowcase() {
         <div className="absolute bottom-12 right-8 h-56 w-56 rounded-full bg-[#3B82F6]/10 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-4xl">
         <FadeIn>
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#3B82F6]">Signature Build System</p>
           <h2 className="max-w-3xl text-3xl font-bold text-[#F9FAFB] md:text-5xl">
-            Scroll through the exact way an idea becomes a <span className="gradient-text-blue">working product.</span>
+            The way ideas become <span className="gradient-text-blue">working products.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#9CA3AF] md:text-lg">
-            This is the real delivery rhythm: define constraints, execute in tight loops, then ship outcomes people can measure.
+            Clear timeline. Weekly progress. Measurable results. Here's how I work, step by step.
           </p>
         </FadeIn>
 
         {prefersReducedMotion ? (
           <ReducedMotionLayout />
         ) : (
-          <>
-            <div ref={trackRef} className="relative mt-12 hidden h-[260vh] lg:block">
-              <div className="sticky top-24 grid grid-cols-[0.95fr_1.05fr] gap-10">
-                <div className="relative rounded-2xl border border-[#1E2A3A] bg-[#111827]/50 p-6">
-                  <div className="pointer-events-none absolute bottom-0 left-8 top-8 w-px bg-[#1E2A3A]" />
+          <div ref={trackRef} className="relative mt-12 h-[180vh]">
+            {/* Vertical timeline connector */}
+            <div className="absolute left-5 top-0 hidden h-full w-px bg-gradient-to-b from-[#1E2A3A] via-[#3B82F6]/50 to-[#1E2A3A] md:left-12 md:block" />
+
+            {/* Phases grid */}
+            <div className="sticky top-20 space-y-6 md:space-y-8">
+              {PHASES.map((phase, index) => {
+                // Calculate scroll progress for this phase
+                const phaseStart = index / PHASES.length;
+                const phaseEnd = (index + 1) / PHASES.length;
+                const phaseProgressValue = Math.max(
+                  0,
+                  Math.min(1, (activePhase - index) / (1 / PHASES.length) + 1)
+                );
+
+                return (
                   <motion.div
-                    className="pointer-events-none absolute left-8 top-8 w-px origin-top bg-[#3B82F6]"
-                    style={{ height: progressHeight }}
-                  />
-
-                  <div className="space-y-8">
-                    {SCENES.map((scene, index) => {
-                      const isActive = index === activeScene;
-                      return (
-                        <button
-                          key={scene.id}
-                          type="button"
-                          onClick={() => setActiveScene(index)}
-                          className="group relative block w-full pl-8 text-left"
-                          aria-pressed={isActive}
-                        >
-                          <span
-                            className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 transition-all"
-                            style={{
-                              borderColor: isActive ? scene.accent : '#334155',
-                              backgroundColor: isActive ? scene.accent : 'transparent',
-                              boxShadow: isActive ? `0 0 0 6px ${scene.accent}20` : 'none',
-                            }}
-                          />
-                          <p className="font-mono text-xs tracking-widest text-[#6B7280]">{scene.label}</p>
-                          <p className={`mt-2 text-lg font-semibold ${isActive ? 'text-[#F9FAFB]' : 'text-[#9CA3AF] group-hover:text-[#E5E7EB]'}`}>
-                            {scene.title}
-                          </p>
-                          <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">{scene.detail}</p>
-                          <p className="mt-3 text-sm text-[#E2E8F0]">{scene.impact}</p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <SceneDisplay scene={currentScene} />
-              </div>
-            </div>
-
-            <div className="mt-10 space-y-4 lg:hidden">
-              <div className="flex flex-wrap gap-2">
-                {SCENES.map((scene, index) => (
-                  <button
-                    key={scene.id}
-                    type="button"
-                    onClick={() => setActiveScene(index)}
-                    className={`rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition ${
-                      index === activeScene
-                        ? 'border-[#3B82F6] bg-[#3B82F6]/20 text-[#DBEAFE]'
-                        : 'border-[#1E2A3A] bg-[#111827]/40 text-[#9CA3AF]'
-                    }`}
+                    key={phase.id}
+                    className="relative md:pl-20"
+                    initial={{ opacity: 0.5 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: false, margin: '-50%' }}
+                    transition={{ duration: 0.5 }}
                   >
-                    {scene.label}
-                  </button>
-                ))}
-              </div>
-              <div className="rounded-2xl border border-[#1E2A3A] bg-[#111827]/50 p-5">
-                <h3 className="text-xl font-semibold text-[#F9FAFB]">{currentScene.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#9CA3AF]">{currentScene.detail}</p>
-                <p className="mt-4 text-sm text-[#E2E8F0]">{currentScene.impact}</p>
-              </div>
-              <SceneDisplay scene={currentScene} />
+                    {/* Timeline dot (hidden on mobile) */}
+                    <motion.div
+                      className="absolute -left-3 top-6 hidden h-6 w-6 rounded-full border-2 md:block"
+                      style={{
+                        borderColor: phase.accentColor,
+                        backgroundColor: index <= activePhase ? phase.accentColor : 'transparent',
+                      }}
+                    />
+
+                    <PhaseCard
+                      phase={phase}
+                      isActive={index === activePhase}
+                      scrollProgress={phaseProgressValue}
+                    />
+                  </motion.div>
+                );
+              })}
             </div>
-          </>
+          </div>
         )}
       </div>
     </section>

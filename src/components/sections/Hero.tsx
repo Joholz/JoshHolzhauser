@@ -134,12 +134,12 @@ export default function Hero() {
             <Terminal className="w-3.5 h-3.5 text-[#3B82F6]" />
             <span>Real products in production</span>
           </div>
-          <div className="w-px h-4 bg-[#1E2A3A]" />
+          <div className="hidden sm:block w-px h-4 bg-[#1E2A3A]" />
           <div className="flex items-center gap-2">
             <Zap className="w-3.5 h-3.5 text-[#F59E0B]" />
             <span>Fast delivery, minimal briefing</span>
           </div>
-          <div className="w-px h-4 bg-[#1E2A3A]" />
+          <div className="hidden sm:block w-px h-4 bg-[#1E2A3A]" />
           <div className="flex items-center gap-2">
             <Shield className="w-3.5 h-3.5 text-[#10B981]" />
             <span>Maintained &amp; improved over time</span>

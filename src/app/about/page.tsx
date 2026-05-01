@@ -33,7 +33,7 @@ export default function AboutPage() {
         </FadeIn>
 
         {/* Hero row */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-20">
           {/* Text */}
           <FadeIn>
             <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">About</p>
@@ -59,7 +59,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3">
               <Link
                 href="/book"
                 className="inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"

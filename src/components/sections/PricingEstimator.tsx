@@ -81,7 +81,7 @@ export function PricingEstimator() {
     <div className="relative mb-20 overflow-hidden rounded-3xl border border-[#1E2A3A] bg-[#111827]/70">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3B82F6] to-transparent" />
 
-      <div className="p-8 md:p-12">
+      <div className="p-6 md:p-12">
         <div className="mb-10">
           <p className="mb-1.5 font-mono text-xs uppercase tracking-[0.22em] text-[#6B7280]">
             Rough Estimate Calculator
@@ -96,7 +96,7 @@ export function PricingEstimator() {
 
         {/* Type */}
         <div className="mb-8">
-          <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6B7280]">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#6B7280]">
             What are you building?
           </p>
           <div className="flex flex-wrap gap-2">
@@ -113,7 +113,7 @@ export function PricingEstimator() {
                 }
               >
                 <span className="text-xs font-semibold">{t.label}</span>
-                <span className="text-[10px] opacity-60">{t.desc}</span>
+                <span className="text-xs opacity-60">{t.desc}</span>
               </button>
             ))}
           </div>
@@ -121,7 +121,7 @@ export function PricingEstimator() {
 
         {/* Timeline */}
         <div className="mb-8">
-          <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6B7280]">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#6B7280]">
             What&apos;s the timeline?
           </p>
           <div className="flex flex-wrap gap-2">
@@ -137,7 +137,7 @@ export function PricingEstimator() {
                 }`}
               >
                 <span className="block text-xs font-semibold">{t.label}</span>
-                <span className="block text-[10px] opacity-60">{t.sub}</span>
+                <span className="block text-xs opacity-60">{t.sub}</span>
               </button>
             ))}
           </div>
@@ -145,7 +145,7 @@ export function PricingEstimator() {
 
         {/* Complexity */}
         <div className="mb-10">
-          <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6B7280]">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#6B7280]">
             How complex?
           </p>
           <div className="flex flex-wrap gap-2">
@@ -161,7 +161,7 @@ export function PricingEstimator() {
                 }`}
               >
                 <span className="block text-xs font-semibold">{c.label}</span>
-                <span className="block text-[10px] opacity-60">{c.desc}</span>
+                <span className="block text-xs opacity-60">{c.desc}</span>
               </button>
             ))}
           </div>
@@ -175,7 +175,7 @@ export function PricingEstimator() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22 }}
-            className="rounded-2xl border border-[#1E2A3A] bg-[#0A0E1A] p-6 md:p-8"
+            className="rounded-2xl border border-[#1E2A3A] bg-[#0A0E1A] p-4 md:p-8"
             style={{ boxShadow: `0 0 40px ${type.color}10` }}
           >
             <div className="flex flex-col gap-6 md:flex-row md:items-center">
@@ -184,11 +184,11 @@ export function PricingEstimator() {
                   Estimated range &mdash; {type.label} &middot; {timeline.label} &middot; {complexity.label}
                 </p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold md:text-5xl" style={{ color: type.color }}>
+                  <span className="text-2xl font-bold sm:text-4xl md:text-5xl" style={{ color: type.color }}>
                     ${low.toLocaleString()}
                   </span>
-                  <span className="mx-1 text-2xl font-light text-[#475569]">&ndash;</span>
-                  <span className="text-4xl font-bold md:text-5xl" style={{ color: type.color }}>
+                  <span className="mx-1 text-xl font-light text-[#475569] sm:text-2xl">&ndash;</span>
+                  <span className="text-2xl font-bold sm:text-4xl md:text-5xl" style={{ color: type.color }}>
                     ${high.toLocaleString()}
                   </span>
                 </div>

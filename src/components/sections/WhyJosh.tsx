@@ -32,7 +32,31 @@ export default function WhyJosh() {
         </FadeIn>
 
         <FadeIn>
-          <div className="overflow-x-auto rounded-2xl border border-[#1E2A3A]">
+          {/* Mobile: cards */}
+          <div className="md:hidden space-y-3">
+            {comparisons.map(({ label, josh, agency, freelancer }) => (
+              <div key={label} className="rounded-xl border border-[#1E2A3A] bg-[#111827] p-4">
+                <p className="text-sm text-[#E5E7EB] leading-snug mb-3">{label}</p>
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  <div>
+                    <p className="text-[11px] font-bold text-[#3B82F6] mb-1.5">Josh</p>
+                    <Cell value={josh} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] text-[#6B7280] mb-1.5">Agency</p>
+                    <Cell value={agency} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] text-[#6B7280] mb-1.5">Freelancer</p>
+                    <Cell value={freelancer} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: table */}
+          <div className="hidden md:block overflow-x-auto rounded-2xl border border-[#1E2A3A]">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-[#111827] border-b border-[#1E2A3A]">

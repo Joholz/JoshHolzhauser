@@ -85,7 +85,7 @@ export default function PortfolioPage() {
           </Link>
           <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">Portfolio</p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#F9FAFB] mb-4">
-            Real problems. Real solutions.
+            Three builds. Different industries. All running.
           </h1>
           <p className="text-[#9CA3AF] text-lg max-w-2xl">
             Every project here started with a real business problem. Here&apos;s the problem, the solution I
