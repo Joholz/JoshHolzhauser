@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 const TYPED_STRINGS = [
   'web applications',
   'automation systems',
-  'AI-powered tools',
+  'LLM-backed tools',
   'SaaS products',
   'business software',
 ];

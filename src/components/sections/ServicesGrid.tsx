@@ -14,21 +14,21 @@ const services = [
     icon: Cpu,
     title: 'AI & Automation',
     description:
-      'Workflow automation and AI-powered tools that eliminate manual work. API integrations, data pipelines, smart notifications.',
+      'Workflow automation and LLM-backed tools that eliminate manual work. API integrations, data pipelines, smart notifications.',
     color: '#06B6D4',
   },
   {
     icon: Smartphone,
     title: 'Mobile Apps',
     description:
-      'React Native mobile apps with AI capabilities, real-time data, and seamless UX. Built for iOS and Android from a single codebase.',
+      'React Native mobile apps with LLM capabilities, real-time data, and solid UX. Built for iOS and Android from a single codebase.',
     color: '#8B5CF6',
   },
   {
     icon: Layers,
     title: 'SaaS Products',
     description:
-      'End-to-end SaaS builds — from concept to paying subscribers. I maintain, improve, and scale your product over time.',
+      'End-to-end SaaS builds. I maintain, improve, and scale your product over time.',
     color: '#10B981',
   },
 ];

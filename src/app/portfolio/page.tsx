@@ -1,76 +1,13 @@
 import Link from 'next/link';
-import { CheckCircle, ArrowUpRight, ArrowLeft } from 'lucide-react';
+import { CheckCircle, ArrowLeft } from 'lucide-react';
 import { FadeIn, Stagger, StaggerItem } from '@/components/ui/FadeIn';
-
-const caseStudies = [
-  {
-    id: 'leah-renewals',
-    tag: 'SaaS · Insurance',
-    tagColor: '#10B981',
-    status: 'Live · Paying subscriber',
-    statusColor: '#10B981',
-    title: 'Leah Renewals — Insurance Management System',
-    problem:
-      'An insurance professional was managing hundreds of client renewal records entirely inside a sprawling Google Sheets document. There was no organized pipeline, no way to track status, no way for clients to securely submit banking details, and no notification system when renewals needed attention.',
-    solution:
-      'I built a full web application from scratch. It ingests the existing Google Sheets data automatically, organizes renewals into a clean management pipeline with status tracking, and includes a secure client-facing intake form for sensitive banking information. When a client submits the form, an email notification fires immediately. I also built a custom notes and tasks module so the team can annotate records without leaving the app.',
-    results: [
-      'Live paying subscriber on an ongoing retainer',
-      'Hundreds of records imported and organized from Google Sheets',
-      'Secure banking intake form replacing insecure email exchanges',
-      'Real-time email notifications on form submissions',
-      'Custom notes & tasks module for team workflow',
-      'Actively used in production daily',
-    ],
-    tech: ['React', 'Vite', 'TypeScript', 'Google Sheets API', 'Resend (email)', 'Tailwind CSS', 'Firebase'],
-    link: null,
-  },
-  {
-    id: 'engler',
-    tag: 'Business · Web',
-    tagColor: '#5B8DEF',
-    status: 'Live at englercontracting.com',
-    statusColor: '#5B8DEF',
-    title: 'Engler Contracting — Business Website',
-    problem:
-      'Engler Contracting & Consulting, a professional tree service and contracting company, had no online presence. They needed a full website that reflected their professionalism, helped customers find them, and captured incoming leads — all from a minimal brief.',
-    solution:
-      'With just their vision and brand direction, I designed and built a complete business website. The site includes a professional homepage, services overview, and an integrated Google Form for lead capture that routes inquiries directly to their inbox. The entire project was built with near-zero back-and-forth — I took their vision and executed it independently.',
-    results: [
-      'Professional online presence live and indexed by Google',
-      'Integrated lead capture system via Google Forms',
-      'Fully responsive — works on all devices',
-      'Built from minimal brief with no spec document required',
-      'Client had their website without managing a design process',
-    ],
-    tech: ['HTML', 'CSS', 'JavaScript', 'Google Forms', 'Static Hosting'],
-    link: 'https://www.englercontracting.com/',
-  },
-  {
-    id: 'cookbookpal',
-    tag: 'Mobile · AI',
-    tagColor: '#8B5CF6',
-    status: 'Available on GitHub',
-    statusColor: '#8B5CF6',
-    title: 'CookBookPal — AI-Powered Recipe App',
-    problem:
-      "Recipe management is scattered across bookmarks, apps, screenshots, and browser tabs. There was no single app that could import recipes from anywhere, generate new ones with AI assistance, and provide a clean step-by-step cook mode — all with your own library synced across devices.",
-    solution:
-      'I built a full React Native mobile application using Expo that runs on both iOS and Android. The app includes AI-powered recipe generation, web scraping to import recipes directly from any URL, Firebase backend for real-time sync, and a dedicated cook mode that walks users through each step without distraction. The app demonstrates complete mobile + AI + backend integration capability.',
-    results: [
-      'Full React Native app running on iOS and Android',
-      'AI recipe generation powered by language models',
-      'Web scraping to import recipes from any website',
-      'Firebase Firestore for real-time cross-device sync',
-      'Step-by-step cook mode with distraction-free UI',
-      'Available publicly on GitHub',
-    ],
-    tech: ['React Native 0.76', 'Expo SDK 52', 'Firebase', 'Expo Router', 'React Native Paper', 'AI/LLM integration'],
-    link: 'https://github.com/Joholz/CookBookPal',
-  },
-];
+import { PublicationBadges } from '@/components/ui/PublicationBadges';
+import { LabGrid } from '@/components/sections/LabGrid';
+import { tier1, tier2 } from '@/data/projects';
 
 export default function PortfolioPage() {
+  const caseStudies = tier1();
+  const labProjects = tier2();
   return (
     <div className="pt-24 pb-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -85,17 +22,21 @@ export default function PortfolioPage() {
           </Link>
           <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">Portfolio</p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#F9FAFB] mb-4">
-            Three builds. Different industries. All running.
+            Six case studies. Different industries. All in production.
           </h1>
           <p className="text-[#9CA3AF] text-lg max-w-2xl">
-            Every project here started with a real business problem. Here&apos;s the problem, the solution I
-            built, and the outcome.
+            Every project here started with a real problem. After the case studies, a lab section with the
+            smaller stuff — utilities, MCP servers, prototypes that didn&apos;t need a customer to be worth
+            building.
           </p>
         </FadeIn>
 
         {/* Case Studies */}
         <Stagger className="space-y-12">
-          {caseStudies.map(({ id, tag, tagColor, status, statusColor, title, problem, solution, results, tech, link }) => (
+          {caseStudies.map((p) => {
+            const { id, tag, tagColor, status, statusColor, title, tech, publications } = p;
+            const { problem, solution, results } = p.caseStudy!;
+            return (
             <StaggerItem key={id}>
               <div id={id} className="bg-[#101319] border border-[#1B1F2A] rounded-2xl overflow-hidden">
                 {/* Header bar */}
@@ -114,16 +55,8 @@ export default function PortfolioPage() {
                       ● {status}
                     </span>
                   </div>
-                  {link && (
-                    <a
-                      href={link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-[#5B8DEF] hover:text-[#86A8FF] transition-colors font-medium"
-                    >
-                      View live site
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
+                  {publications && publications.length > 0 && (
+                    <PublicationBadges publications={publications} />
                   )}
                 </div>
 
@@ -175,8 +108,24 @@ export default function PortfolioPage() {
                 </div>
               </div>
             </StaggerItem>
-          ))}
+            );
+          })}
         </Stagger>
+
+        {/* The Lab */}
+        {labProjects.length > 0 && (
+          <FadeIn className="mt-24">
+            <div className="mb-10">
+              <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">The Lab</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#F9FAFB] mb-3">Other things I&apos;ve built.</h2>
+              <p className="text-[#9CA3AF] max-w-2xl">
+                Smaller projects — utilities, MCP servers, prototypes that didn&apos;t need a customer to be worth
+                building. Some are live, some live on GitHub, some just live on my machine.
+              </p>
+            </div>
+            <LabGrid projects={labProjects} />
+          </FadeIn>
+        )}
 
         {/* CTA */}
         <FadeIn delay={0.2} className="mt-16 text-center">

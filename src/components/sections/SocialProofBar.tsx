@@ -7,7 +7,7 @@ export default function SocialProofBar() {
       <div className="max-w-6xl mx-auto px-6 py-10">
         <FadeIn>
           <p className="text-center text-xs text-[#6B7280] uppercase tracking-widest mb-8 font-medium">
-            Clients shipping real software
+            Where the work runs
           </p>
         </FadeIn>
         <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
@@ -33,8 +33,8 @@ export default function SocialProofBar() {
           {/* Stat */}
           <FadeIn delay={0.2}>
             <div className="text-center">
-              <p className="text-2xl font-bold text-[#F9FAFB]">3+</p>
-              <p className="text-xs text-[#6B7280] mt-0.5">Products built &amp; deployed</p>
+              <p className="text-2xl font-bold text-[#F9FAFB]">12+</p>
+              <p className="text-xs text-[#6B7280] mt-0.5">Products shipped</p>
             </div>
           </FadeIn>
 
@@ -42,8 +42,8 @@ export default function SocialProofBar() {
 
           <FadeIn delay={0.3}>
             <div className="text-center">
-              <p className="text-2xl font-bold text-[#10B981]">Live</p>
-              <p className="text-xs text-[#6B7280] mt-0.5">Paying SaaS subscriber</p>
+              <p className="text-2xl font-bold text-[#10B981]">iOS + Android</p>
+              <p className="text-xs text-[#6B7280] mt-0.5">Published apps</p>
             </div>
           </FadeIn>
 
@@ -51,8 +51,8 @@ export default function SocialProofBar() {
 
           <FadeIn delay={0.4}>
             <div className="text-center">
-              <p className="text-2xl font-bold text-[#F9FAFB]">React · Node · AI</p>
-              <p className="text-xs text-[#6B7280] mt-0.5">Full-stack capability</p>
+              <p className="text-2xl font-bold text-[#F9FAFB]">Web · Mobile · K8s</p>
+              <p className="text-xs text-[#6B7280] mt-0.5">Ships across stacks</p>
             </div>
           </FadeIn>
         </div>

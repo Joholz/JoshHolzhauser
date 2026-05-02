@@ -3,7 +3,7 @@ import { FadeIn } from '@/components/ui/FadeIn';
 
 const comparisons = [
   { label: 'You talk to the person writing the code',           josh: true,  agency: false, freelancer: 'maybe' },
-  { label: 'Real deployed products with paying users',         josh: true,  agency: true,  freelancer: 'maybe' },
+  { label: 'Real deployed products with active users',         josh: true,  agency: true,  freelancer: 'maybe' },
   { label: 'Ongoing maintenance & improvements',               josh: true,  agency: true,  freelancer: false  },
   { label: 'Works from a rough idea — no formal brief needed', josh: true,  agency: false, freelancer: false  },
   { label: 'Uses AI in the build process — ships faster',      josh: true,  agency: 'maybe', freelancer: 'maybe' },

@@ -10,7 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 > **This is the single source of truth for every AI coding session on this project.**
 > Read it fully before touching a file. Update it whenever something changes — architecture, decisions, copy rules, pending tasks. An outdated agents.md causes drift. Keeping it current is as important as keeping the code clean.
-> **Last updated: 2026-05-02**
+> **Last updated: 2026-05-02 (portfolio expansion)**
 
 ---
 
@@ -115,7 +115,7 @@ src/
     about/page.tsx           ← Story, headshot, values, tech stack
     admin/page.tsx           ← Lead dashboard (Google Auth protected)
     book/page.tsx            ← Custom 3-step contact form → Firestore
-    portfolio/page.tsx       ← 3 case studies with #anchors
+    portfolio/page.tsx       ← 6 Tier-1 case studies + Lab grid with #anchors
     services/page.tsx        ← 5 pricing tiers
   components/
     layout/Navbar.tsx        ← Sticky, scroll-aware, mobile hamburger
@@ -123,12 +123,17 @@ src/
     sections/Hero.tsx        ← Typewriter, dual CTA, trust anchors
     sections/SocialProofBar.tsx
     sections/ServicesGrid.tsx
-    sections/PortfolioPreview.tsx
+    sections/PortfolioPreview.tsx ← 4 featured projects from projects.ts
     sections/AIShowcase.tsx  ← Scroll-synced split-view scenes: code panel (typing) left, live preview (UI assembling) right. Three phases (Plan/Build/Result) with progress rail + reduced-motion fallback.
     sections/HowIWork.tsx
     sections/WhyJosh.tsx     ← Comparison table
     sections/FinalCTA.tsx
+    sections/LabGrid.tsx     ← Tier-2 compact card grid for /portfolio
+    sections/SkillsGraph.tsx ← 5-category animated skills grid
     ui/FadeIn.tsx            ← FadeIn, Stagger, StaggerItem
+    ui/PublicationBadges.tsx ← Vercel/Play Store/GitHub/Moodle/Website badges
+  data/
+    projects.ts              ← Single source of truth: all 12 projects, tiers, featured flags
   lib/
     firebase.ts              ← Firebase app + Firestore export
     utils.ts                 ← cn() helper (clsx + tailwind-merge)
@@ -180,11 +185,29 @@ Each document written by the `/book` contact form:
 
 ## 6. Portfolio Projects
 
-| ID               | Project            | Status                        | Tech                                 |
-|------------------|--------------------|-------------------------------|--------------------------------------|
-| `#leah-renewals` | Leah Renewals      | Live · Paying subscriber      | React, Node.js, Firebase, Sheets API |
-| `#engler`        | Engler Contracting | Live at englercontracting.com | React, Next.js, Vercel               |
-| `#cookbookpal`   | CookBookPal        | Available on GitHub           | React Native, Expo, Firebase, OpenAI |
+### Tier 1 — Case Studies (6)
+
+| ID                        | Title                                              | Featured | Publications                          |
+|---------------------------|----------------------------------------------------|----------|---------------------------------------|
+| `#insurance-ops`          | Insurance Ops Platform (anonymized client)         | ✓        | None (private)                        |
+| `#engler`                 | Engler Contracting — Business Website              | ✓        | englercontracting.com                 |
+| `#enterprise-ai-platform` | Enterprise AI Orchestration Platform (anonymized)  | ✓        | None (private)                        |
+| `#polklookup`             | PolkLookup — Property Records (Mobile + Web)       | ✓        | Vercel + Google Play                  |
+| `#marigold`               | Marigold — Recipe App (formerly CookBookPal)       |          | Google Play + GitHub                  |
+| `#moodle-stack`           | Moodle — Custom Plugins & Container Stack          |          | Moodle badge                          |
+
+### Tier 2 — Lab Grid (6)
+
+| ID                   | Title                        | Publications         |
+|----------------------|------------------------------|----------------------|
+| `#halitaily`         | HaliTaily                    | Vercel               |
+| `#enterprise-desktop`| Cross-platform Desktop App   | None (private)       |
+| `#mcp-trio`          | MCP Server Trio              | GitHub               |
+| `#siphaus`           | SipHaus                      | None                 |
+| `#couples-game`      | Couples Game                 | None                 |
+| `#waveform-creator`  | Waveform Creator             | None                 |
+
+**Single source of truth:** `src/data/projects.ts` — all projects, tiers, featured flags, publication badges.
 
 ---
 

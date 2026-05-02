@@ -1,41 +1,48 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { FadeIn, Stagger, StaggerItem } from '@/components/ui/FadeIn';
+import { featured } from '@/data/projects';
+import { PublicationBadges } from '@/components/ui/PublicationBadges';
+import type { Publication } from '@/data/projects';
 
-const projects = [
-  {
-    tag: 'SaaS · Insurance',
-    tagColor: '#10B981',
-    title: 'Leah Renewals — Insurance Management System',
-    description:
-      'A full web application that ingests hundreds of renewal records from Google Sheets, organizes them into a manageable pipeline, and includes a secure client banking intake form with email notifications and a custom notes/tasks system.',
-    wins: ['Live paying subscriber', 'Secure form with email alerts', 'Google Sheets integration', 'Custom notes & tasks module'],
-    tech: ['React', 'Vite', 'Google Sheets API', 'Resend'],
-    href: '/portfolio#leah-renewals',
-  },
-  {
-    tag: 'Business · Web',
-    tagColor: '#5B8DEF',
-    title: 'Engler Contracting — Business Website',
-    description:
-      'Complete business website for a tree contracting company built from a minimal brief. Full professional presence with an integrated Google Form lead capture system — designed and shipped with near-zero client hand-holding.',
-    wins: ['Built from vision alone', 'Google Form lead capture', 'Fully responsive', 'Live at englercontracting.com'],
-    tech: ['HTML', 'CSS', 'Google Forms', 'Hosting'],
-    href: '/portfolio#engler',
-  },
-  {
-    tag: 'Mobile · AI',
-    tagColor: '#8B5CF6',
-    title: 'CookBookPal — AI Recipe Mobile App',
-    description:
-      'React Native mobile app with AI-powered recipe generation, web scraping for recipe imports, Firebase backend, and a step-by-step cook mode. Demonstrates full mobile + AI integration capability.',
-    wins: ['AI recipe generation', 'Web scraping import', 'Firebase backend', 'iOS & Android'],
-    tech: ['React Native', 'Expo', 'Firebase', 'AI/ML'],
-    href: '/portfolio#cookbookpal',
-  },
-];
+const PREVIEW_WINS: Record<string, string[]> = {
+  'insurance-ops': [
+    'Encrypted client intake (TweetNaCl)',
+    'Full audit log of every change',
+    'Notes + tasks with assignment & due dates',
+    'In production, used daily',
+  ],
+  engler: [
+    'Built from vision alone',
+    'Google Form lead capture',
+    'Fully responsive',
+    'Live at englercontracting.com',
+  ],
+  'enterprise-ai-platform': [
+    'Go microservices on Kubernetes',
+    'Streaming chat through nginx ingress',
+    'MCP tool registry',
+    'Helm-packaged deploys',
+  ],
+  polklookup: [
+    '310k+ records searchable offline',
+    'SQLite in the browser via WebAssembly',
+    'Published on Google Play and Vercel',
+    'Same data layer powers both surfaces',
+  ],
+};
 
 export default function PortfolioPreview() {
+  const projects = featured().map((p) => ({
+    tag: p.tag,
+    tagColor: p.tagColor,
+    title: p.title,
+    description: p.caseStudy?.preview?.description ?? '',
+    wins: PREVIEW_WINS[p.id] ?? [],
+    tech: p.caseStudy?.preview?.tech ?? p.tech,
+    publications: p.publications as Publication[] | undefined,
+    href: `/portfolio#${p.id}`,
+  }));
   return (
     <section className="py-24 px-6 bg-[#101319]/30">
       <div className="max-w-6xl mx-auto">
@@ -45,12 +52,12 @@ export default function PortfolioPreview() {
             What I&apos;ve actually shipped.
           </h2>
           <p className="text-[#9CA3AF] max-w-xl mx-auto">
-            Three builds. All live. All different.
+            Four I&apos;d bet a contract on.
           </p>
         </FadeIn>
 
         <Stagger className="space-y-6">
-          {projects.map(({ tag, tagColor, title, description, wins, tech, href }) => (
+          {projects.map(({ tag, tagColor, title, description, wins, tech, publications, href }) => (
             <StaggerItem key={title}>
               <Link href={href} className="group block">
                 <div className="bg-[#101319] border border-[#1B1F2A] hover:border-[#262B38] rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(91,141,239,0.07)] hover:-translate-y-0.5">
@@ -67,13 +74,16 @@ export default function PortfolioPreview() {
                         {title}
                       </h3>
                       <p className="text-sm text-[#9CA3AF] leading-relaxed mb-5">{description}</p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {tech.map(t => (
                           <span key={t} className="text-xs bg-[#171A22] border border-[#1B1F2A] text-[#6B7280] px-2.5 py-1 rounded-md font-mono">
                             {t}
                           </span>
                         ))}
                       </div>
+                      {publications && publications.length > 0 && (
+                        <PublicationBadges publications={publications} noLink />
+                      )}
                     </div>
 
                     {/* Right wins */}

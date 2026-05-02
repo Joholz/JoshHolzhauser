@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Josh Holzhauser — Full-Stack Developer & Builder",
   description:
-    "I build custom web apps, automations, and AI-powered tools for businesses. From concept to deployed product — maintained and improved over time.",
+    "I build custom web apps, automations, and LLM-backed tools for businesses. Concept to deployed product — maintained and improved over time.",
   keywords: ["full-stack developer", "web app development", "automation", "SaaS", "AI development", "custom software"],
   openGraph: {
     title: "Josh Holzhauser — Full-Stack Developer & Builder",

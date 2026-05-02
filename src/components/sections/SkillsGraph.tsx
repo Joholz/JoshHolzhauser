@@ -5,19 +5,29 @@ import { motion, useInView } from 'framer-motion';
 
 const STACK = [
   {
-    category: 'Frontend',
+    category: 'Frontend & Mobile',
     color: '#5B8DEF',
-    skills: ['React', 'Next.js', 'React Native', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    skills: ['React', 'Next.js', 'React Native', 'Expo', 'TypeScript', 'Tailwind', 'Framer Motion', 'Electron'],
   },
   {
     category: 'Backend & Data',
     color: '#06B6D4',
-    skills: ['Node.js', 'Firebase', 'Firestore', 'REST APIs', 'Google APIs', 'Resend'],
+    skills: ['Node.js', 'Go', 'Python', 'PHP', 'Firebase', 'Supabase', 'PostgreSQL', 'SQLite', 'sql.js'],
   },
   {
-    category: 'AI & Tooling',
+    category: 'Infrastructure',
+    color: '#10B981',
+    skills: ['Docker', 'Kubernetes', 'Helm', 'nginx', 'Azure OIDC', 'Vercel', 'GitHub Actions'],
+  },
+  {
+    category: 'AI & Integration',
     color: '#8B5CF6',
-    skills: ['LLM Integration', 'Web Scraping', 'Workflow Automation', 'GitHub', 'Vercel', 'Expo'],
+    skills: ['LLM integration', 'Ollama', 'MCP servers', 'Streaming chat', 'Web scraping', 'Google APIs'],
+  },
+  {
+    category: 'Platforms shipped',
+    color: '#F59E0B',
+    skills: ['iOS', 'Android', 'Web', 'Desktop (Win/Mac/Linux)', 'Moodle plugins', 'CLI tools'],
   },
 ];
 
@@ -28,7 +38,7 @@ export function SkillsGraph() {
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <div ref={ref} className="grid grid-cols-1 gap-6 md:grid-cols-3">
+    <div ref={ref} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {STACK.map((cat, catIdx) => (
         <motion.div
           key={cat.category}
