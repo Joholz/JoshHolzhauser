@@ -47,10 +47,10 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <Image
-            src="/JH_Logo_White.png"
+            src="/JH_Logo_White_Cropped.png"
             alt="JH"
-            width={48}
-            height={48}
+            width={20}
+            height={20}
             className="object-contain shrink-0"
           />
           <span className="font-bold text-[#F9FAFB] tracking-tight">Josh Holzhauser</span>
