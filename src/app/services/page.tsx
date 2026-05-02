@@ -8,7 +8,7 @@ const tiers = [
     name: 'Business Web Presence',
     price: '$800–$1,500',
     type: 'One-time',
-    color: '#3B82F6',
+    color: '#5B8DEF',
     description:
       'A complete professional website for your business. I need only your vision — no spec document required.',
     features: [
@@ -109,7 +109,7 @@ export default function ServicesPage() {
             <ArrowLeft className="w-4 h-4" />
             Back to home
           </Link>
-          <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">Services</p>
+          <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">Services</p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#F9FAFB] mb-4">
             What I build — and what it costs.
           </h1>
@@ -132,15 +132,15 @@ export default function ServicesPage() {
           {tiers.map(({ name, price, type, color, description, features, cta, highlight }) => (
             <StaggerItem key={name}>
               <div
-                className={`relative flex flex-col h-full bg-[#111827] border rounded-2xl p-8 transition-all duration-300 ${
+                className={`relative flex flex-col h-full bg-[#101319] border rounded-2xl p-8 transition-all duration-300 ${
                   highlight
-                    ? 'border-[#3B82F6] shadow-[0_0_40px_rgba(59,130,246,0.15)]'
-                    : 'border-[#1E2A3A] hover:border-[#2a3a50]'
+                    ? 'border-[#5B8DEF] shadow-[0_0_40px_rgba(91,141,239,0.15)]'
+                    : 'border-[#1B1F2A] hover:border-[#262B38]'
                 }`}
               >
                 {highlight && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-[#3B82F6] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    <span className="bg-[#5B8DEF] text-white text-xs font-semibold px-3 py-1 rounded-full">
                       Most Popular
                     </span>
                   </div>
@@ -174,7 +174,7 @@ export default function ServicesPage() {
                   className="flex items-center justify-center gap-2 font-semibold text-sm px-5 py-3 rounded-xl transition-all duration-200 w-full"
                   style={
                     highlight
-                      ? { background: '#3B82F6', color: '#fff' }
+                      ? { background: '#5B8DEF', color: '#fff' }
                       : { background: `${color}18`, color }
                   }
                 >
@@ -190,7 +190,7 @@ export default function ServicesPage() {
         <FadeIn delay={0.2} className="mt-12 text-center">
           <p className="text-sm text-[#6B7280]">
             Not sure which tier fits?{' '}
-            <Link href="/book" className="text-[#3B82F6] hover:text-[#60A5FA] transition-colors font-medium">
+            <Link href="/book" className="text-[#5B8DEF] hover:text-[#86A8FF] transition-colors font-medium">
               Book a free call
             </Link>{' '}
             — I&apos;ll help you scope exactly what you need.

@@ -10,7 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 > **This is the single source of truth for every AI coding session on this project.**
 > Read it fully before touching a file. Update it whenever something changes — architecture, decisions, copy rules, pending tasks. An outdated agents.md causes drift. Keeping it current is as important as keeping the code clean.
-> **Last updated: 2026-05-01**
+> **Last updated: 2026-05-02**
 
 ---
 
@@ -75,17 +75,23 @@ Cubic-bezier arrays must be cast: `ease: [0.25, 0.46, 0.45, 0.94] as [number,num
 
 ## 3. Design System
 
-| Token        | Value     | Usage              |
-|--------------|-----------|--------------------|
-| `--color-bg` | `#0A0E1A` | Page background    |
-| Surface      | `#111827` | Cards, panels      |
-| Border       | `#1E2A3A` | Dividers, outlines |
-| Primary CTA  | `#3B82F6` | Buttons, links     |
-| Accent       | `#06B6D4` | Secondary accents  |
-| Success      | `#10B981` | Positive signals   |
-| Text primary | `#F9FAFB` |                    |
-| Text muted   | `#9CA3AF` |                    |
-| Text faint   | `#6B7280` |                    |
+| Token        | Value     | Usage                          |
+|--------------|-----------|--------------------------------|
+| `--color-bg` | `#07080B` | Page background (near-black)   |
+| Surface      | `#101319` | Cards, panels                  |
+| Surface-2    | `#171A22` | Tag chips, inset blocks        |
+| Border       | `#1B1F2A` | Dividers, outlines             |
+| Border-2     | `#262B38` | Hover/elevated borders         |
+| Primary CTA  | `#5B8DEF` | Buttons, links (refined blue — not Tailwind default) |
+| Primary hover| `#4775D9` | Button hover                   |
+| Primary text accent | `#86A8FF` | Link hover, muted accents |
+| Accent       | `#06B6D4` | Cyan punch — gradients, KPIs   |
+| Success      | `#10B981` | Positive signals               |
+| Text primary | `#F9FAFB` |                                |
+| Text muted   | `#9CA3AF` |                                |
+| Text faint   | `#6B7280` |                                |
+
+> **Palette intent:** near-black neutral with the faintest cool undertone, paired with a periwinkle-leaning blue (`#5B8DEF`) instead of the default Tailwind 500 (`#3B82F6`) so the site escapes the "generic dev portfolio" look. The cyan accent stays as the contrast pop.
 
 Fonts: `Inter Variable` (`--font-inter`) + `Geist Mono` (`--font-geist-mono`)
 

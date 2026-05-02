@@ -51,7 +51,7 @@ export function MagneticCursor() {
         width:         20,
         height:        20,
         borderRadius:  '50%',
-        border:        '1px solid rgba(59,130,246,0.28)',
+        border:        '1px solid rgba(91,141,239,0.28)',
         pointerEvents: 'none',
         zIndex:        9999,
         opacity:       visible ? 1 : 0,

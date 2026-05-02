@@ -70,7 +70,7 @@ function timeAgo(seconds: number) {
 
 const STATUS_COLORS: Record<LeadStatus, string> = {
   new:       'bg-[#10B981]',
-  contacted: 'bg-[#3B82F6]',
+  contacted: 'bg-[#5B8DEF]',
   closed:    'bg-[#6B7280]',
 };
 
@@ -127,7 +127,7 @@ export default function AdminPage() {
   if (!authReady) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-[#3B82F6] border-t-transparent rounded-full animate-spin" />
+        <div className="w-6 h-6 border-2 border-[#5B8DEF] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -137,7 +137,7 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center">
-          <div className="w-12 h-12 bg-[#111827] border border-[#1E2A3A] rounded-2xl flex items-center justify-center mx-auto mb-5 text-xl">
+          <div className="w-12 h-12 bg-[#101319] border border-[#1B1F2A] rounded-2xl flex items-center justify-center mx-auto mb-5 text-xl">
             🔒
           </div>
           <h1 className="text-xl font-bold text-[#F9FAFB] mb-2">Admin</h1>
@@ -165,7 +165,7 @@ export default function AdminPage() {
       <div className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center">
           <p className="text-[#9CA3AF] mb-4">Access denied for <span className="text-[#F9FAFB]">{user.email}</span></p>
-          <button onClick={handleSignOut} className="text-sm text-[#3B82F6] hover:text-[#60A5FA] transition-colors">
+          <button onClick={handleSignOut} className="text-sm text-[#5B8DEF] hover:text-[#86A8FF] transition-colors">
             Sign out
           </button>
         </div>
@@ -194,13 +194,13 @@ export default function AdminPage() {
             <button
               onClick={fetchLeads}
               title="Refresh"
-              className="p-2 rounded-lg border border-[#1E2A3A] text-[#6B7280] hover:text-[#F9FAFB] hover:border-[#2a3a50] transition-all"
+              className="p-2 rounded-lg border border-[#1B1F2A] text-[#6B7280] hover:text-[#F9FAFB] hover:border-[#262B38] transition-all"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
             </button>
             <button
               onClick={handleSignOut}
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-[#1E2A3A] text-[#6B7280] hover:text-[#F9FAFB] transition-all text-sm"
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-[#1B1F2A] text-[#6B7280] hover:text-[#F9FAFB] transition-all text-sm"
             >
               <LogOut className="w-3.5 h-3.5" /> Sign out
             </button>
@@ -211,10 +211,10 @@ export default function AdminPage() {
         <div className="grid grid-cols-3 gap-4 mb-8">
           {[
             { label: 'New',       value: newCount,       color: '#10B981' },
-            { label: 'Contacted', value: contactedCount, color: '#3B82F6' },
+            { label: 'Contacted', value: contactedCount, color: '#5B8DEF' },
             { label: 'Closed',    value: closedCount,    color: '#6B7280' },
           ].map(({ label, value, color }) => (
-            <div key={label} className="bg-[#111827] border border-[#1E2A3A] rounded-xl p-4 text-center">
+            <div key={label} className="bg-[#101319] border border-[#1B1F2A] rounded-xl p-4 text-center">
               <p className="text-2xl font-bold" style={{ color }}>{value}</p>
               <p className="text-xs text-[#6B7280] mt-0.5">{label}</p>
             </div>
@@ -233,8 +233,8 @@ export default function AdminPage() {
             {leads.map(lead => (
               <div
                 key={lead.id}
-                className={`bg-[#111827] border rounded-2xl overflow-hidden transition-all ${
-                  lead.status === 'new' ? 'border-[#10B981]/30' : 'border-[#1E2A3A]'
+                className={`bg-[#101319] border rounded-2xl overflow-hidden transition-all ${
+                  lead.status === 'new' ? 'border-[#10B981]/30' : 'border-[#1B1F2A]'
                 }`}
               >
                 {/* Row */}
@@ -246,7 +246,7 @@ export default function AdminPage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5 flex-wrap">
                       <span className="text-sm font-semibold text-[#F9FAFB]">{lead.name}</span>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#60A5FA] border border-[#3B82F6]/20">
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-[#5B8DEF]/10 text-[#86A8FF] border border-[#5B8DEF]/20">
                         {PROJECT_LABELS[lead.projectType] ?? lead.projectType}
                       </span>
                     </div>
@@ -262,12 +262,12 @@ export default function AdminPage() {
 
                 {/* Expanded */}
                 {expanded === lead.id && (
-                  <div className="px-5 pb-5 border-t border-[#1E2A3A] pt-4 space-y-4">
+                  <div className="px-5 pb-5 border-t border-[#1B1F2A] pt-4 space-y-4">
                     {/* Meta grid */}
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs">
                       <div>
                         <p className="text-[#6B7280] mb-1">Email</p>
-                        <a href={`mailto:${lead.email}`} className="text-[#3B82F6] hover:text-[#60A5FA] flex items-center gap-1">
+                        <a href={`mailto:${lead.email}`} className="text-[#5B8DEF] hover:text-[#86A8FF] flex items-center gap-1">
                           <Mail className="w-3 h-3" />{lead.email}
                         </a>
                       </div>
@@ -300,7 +300,7 @@ export default function AdminPage() {
                       {lead.status !== 'contacted' && (
                         <button
                           onClick={() => setStatus(lead.id, 'contacted')}
-                          className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#60A5FA] rounded-lg hover:bg-[#3B82F6]/20 transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-[#5B8DEF]/10 border border-[#5B8DEF]/20 text-[#86A8FF] rounded-lg hover:bg-[#5B8DEF]/20 transition-colors"
                         >
                           <CheckCircle className="w-3.5 h-3.5" /> Mark contacted
                         </button>
@@ -308,7 +308,7 @@ export default function AdminPage() {
                       {lead.status !== 'new' && (
                         <button
                           onClick={() => setStatus(lead.id, 'new')}
-                          className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-[#111827] border border-[#1E2A3A] text-[#9CA3AF] rounded-lg hover:border-[#2a3a50] transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-[#101319] border border-[#1B1F2A] text-[#9CA3AF] rounded-lg hover:border-[#262B38] transition-colors"
                         >
                           <Clock className="w-3.5 h-3.5" /> Mark new
                         </button>
@@ -316,7 +316,7 @@ export default function AdminPage() {
                       {lead.status !== 'closed' && (
                         <button
                           onClick={() => setStatus(lead.id, 'closed')}
-                          className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-[#111827] border border-[#1E2A3A] text-[#6B7280] rounded-lg hover:border-[#2a3a50] transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-[#101319] border border-[#1B1F2A] text-[#6B7280] rounded-lg hover:border-[#262B38] transition-colors"
                         >
                           <X className="w-3.5 h-3.5" /> Close
                         </button>

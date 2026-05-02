@@ -41,7 +41,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-[#0A0E1A] text-[#F9FAFB] antialiased">
+      <body className="min-h-screen flex flex-col bg-[#07080B] text-[#F9FAFB] antialiased">
         {/* Custom cursor — replaces system cursor on pointer devices */}
         <MagneticCursor />
         {/* Global WebGL particle field — fixed behind all content */}

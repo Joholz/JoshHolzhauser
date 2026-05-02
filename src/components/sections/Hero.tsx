@@ -39,7 +39,7 @@ function Typewriter() {
     <span className="gradient-text-blue">
       {text}
       <span
-        className="inline-block w-0.5 h-[1em] bg-[#3B82F6] ml-0.5 align-middle"
+        className="inline-block w-0.5 h-[1em] bg-[#5B8DEF] ml-0.5 align-middle"
         style={{ animation: 'blink 1s step-end infinite' }}
       />
     </span>
@@ -62,7 +62,7 @@ export default function Hero() {
       />
       {/* Soft blue centre glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[700px] h-[500px] bg-[#3B82F6]/6 rounded-full blur-[140px]" />
+        <div className="w-[700px] h-[500px] bg-[#5B8DEF]/6 rounded-full blur-[140px]" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6 py-24 text-center">
@@ -71,7 +71,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2 bg-[#111827] border border-[#1E2A3A] text-[#9CA3AF] text-xs font-medium px-3 py-1.5 rounded-full mb-8"
+          className="inline-flex items-center gap-2 bg-[#101319] border border-[#1B1F2A] text-[#9CA3AF] text-xs font-medium px-3 py-1.5 rounded-full mb-8"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
           Available for new projects
@@ -110,14 +110,14 @@ export default function Hero() {
         >
           <Link
             href="/book"
-            className="group flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] text-sm w-full sm:w-auto justify-center"
+            className="group flex items-center gap-2 bg-[#5B8DEF] hover:bg-[#4775D9] text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(91,141,239,0.5)] text-sm w-full sm:w-auto justify-center"
           >
             Book a Free Discovery Call
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link
             href="/portfolio"
-            className="flex items-center gap-2 text-[#9CA3AF] hover:text-[#F9FAFB] font-medium text-sm transition-colors border border-[#1E2A3A] hover:border-[#3B82F6]/40 px-6 py-3.5 rounded-xl w-full sm:w-auto justify-center"
+            className="flex items-center gap-2 text-[#9CA3AF] hover:text-[#F9FAFB] font-medium text-sm transition-colors border border-[#1B1F2A] hover:border-[#5B8DEF]/40 px-6 py-3.5 rounded-xl w-full sm:w-auto justify-center"
           >
             See My Work ↓
           </Link>
@@ -131,15 +131,15 @@ export default function Hero() {
           className="mt-14 flex flex-wrap items-center justify-center gap-6 text-xs text-[#6B7280]"
         >
           <div className="flex items-center gap-2">
-            <Terminal className="w-3.5 h-3.5 text-[#3B82F6]" />
+            <Terminal className="w-3.5 h-3.5 text-[#5B8DEF]" />
             <span>Real products in production</span>
           </div>
-          <div className="hidden sm:block w-px h-4 bg-[#1E2A3A]" />
+          <div className="hidden sm:block w-px h-4 bg-[#1B1F2A]" />
           <div className="flex items-center gap-2">
             <Zap className="w-3.5 h-3.5 text-[#F59E0B]" />
             <span>Fast delivery, minimal briefing</span>
           </div>
-          <div className="hidden sm:block w-px h-4 bg-[#1E2A3A]" />
+          <div className="hidden sm:block w-px h-4 bg-[#1B1F2A]" />
           <div className="flex items-center gap-2">
             <Shield className="w-3.5 h-3.5 text-[#10B981]" />
             <span>Maintained &amp; improved over time</span>

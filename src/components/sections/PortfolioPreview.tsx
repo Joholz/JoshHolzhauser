@@ -15,7 +15,7 @@ const projects = [
   },
   {
     tag: 'Business · Web',
-    tagColor: '#3B82F6',
+    tagColor: '#5B8DEF',
     title: 'Engler Contracting — Business Website',
     description:
       'Complete business website for a tree contracting company built from a minimal brief. Full professional presence with an integrated Google Form lead capture system — designed and shipped with near-zero client hand-holding.',
@@ -37,10 +37,10 @@ const projects = [
 
 export default function PortfolioPreview() {
   return (
-    <section className="py-24 px-6 bg-[#111827]/30">
+    <section className="py-24 px-6 bg-[#101319]/30">
       <div className="max-w-6xl mx-auto">
         <FadeIn className="text-center mb-16">
-          <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">Portfolio</p>
+          <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">Portfolio</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#F9FAFB] mb-4">
             What I&apos;ve actually shipped.
           </h2>
@@ -53,7 +53,7 @@ export default function PortfolioPreview() {
           {projects.map(({ tag, tagColor, title, description, wins, tech, href }) => (
             <StaggerItem key={title}>
               <Link href={href} className="group block">
-                <div className="bg-[#111827] border border-[#1E2A3A] hover:border-[#2a3a50] rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.07)] hover:-translate-y-0.5">
+                <div className="bg-[#101319] border border-[#1B1F2A] hover:border-[#262B38] rounded-2xl p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(91,141,239,0.07)] hover:-translate-y-0.5">
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     {/* Left */}
                     <div className="flex-1">
@@ -63,13 +63,13 @@ export default function PortfolioPreview() {
                       >
                         {tag}
                       </span>
-                      <h3 className="text-xl font-bold text-[#F9FAFB] mb-3 group-hover:text-[#60A5FA] transition-colors">
+                      <h3 className="text-xl font-bold text-[#F9FAFB] mb-3 group-hover:text-[#86A8FF] transition-colors">
                         {title}
                       </h3>
                       <p className="text-sm text-[#9CA3AF] leading-relaxed mb-5">{description}</p>
                       <div className="flex flex-wrap gap-2">
                         {tech.map(t => (
-                          <span key={t} className="text-xs bg-[#1a2332] border border-[#1E2A3A] text-[#6B7280] px-2.5 py-1 rounded-md font-mono">
+                          <span key={t} className="text-xs bg-[#171A22] border border-[#1B1F2A] text-[#6B7280] px-2.5 py-1 rounded-md font-mono">
                             {t}
                           </span>
                         ))}
@@ -87,7 +87,7 @@ export default function PortfolioPreview() {
                     </div>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-1 text-sm text-[#3B82F6] font-medium">
+                  <div className="mt-6 flex items-center gap-1 text-sm text-[#5B8DEF] font-medium">
                     View case study
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -100,7 +100,7 @@ export default function PortfolioPreview() {
         <FadeIn delay={0.2} className="text-center mt-10">
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 text-sm text-[#3B82F6] hover:text-[#60A5FA] transition-colors font-medium"
+            className="inline-flex items-center gap-2 text-sm text-[#5B8DEF] hover:text-[#86A8FF] transition-colors font-medium"
           >
             View full portfolio
             <ArrowRight className="w-4 h-4" />

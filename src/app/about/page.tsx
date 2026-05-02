@@ -36,7 +36,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-20">
           {/* Text */}
           <FadeIn>
-            <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">About</p>
+            <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">About</p>
             <h1 className="text-4xl md:text-5xl font-bold text-[#F9FAFB] mb-6 leading-tight">
               I&apos;m Josh. I build things <span className="gradient-text-blue">that work.</span>
             </h1>
@@ -62,7 +62,7 @@ export default function AboutPage() {
             <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3">
               <Link
                 href="/book"
-                className="inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                className="inline-flex items-center gap-2 bg-[#5B8DEF] hover:bg-[#4775D9] text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm hover:shadow-[0_0_20px_rgba(91,141,239,0.4)]"
               >
                 Book a Free Call
                 <ArrowRight className="w-4 h-4" />
@@ -71,7 +71,7 @@ export default function AboutPage() {
                 href="https://github.com/Joholz"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-[#9CA3AF] hover:text-[#F9FAFB] transition-colors text-sm border border-[#1E2A3A] hover:border-[#2a3a50] px-5 py-3 rounded-xl"
+                className="inline-flex items-center gap-2 text-[#9CA3AF] hover:text-[#F9FAFB] transition-colors text-sm border border-[#1B1F2A] hover:border-[#262B38] px-5 py-3 rounded-xl"
               >
                 <GithubIcon />
                 View GitHub
@@ -82,7 +82,7 @@ export default function AboutPage() {
           {/* Photo */}
           <FadeIn delay={0.2} className="flex justify-center lg:justify-end">
             <div className="relative w-72 h-80 lg:w-80 lg:h-96">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#3B82F6]/20 to-[#06B6D4]/10 rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#5B8DEF]/20 to-[#06B6D4]/10 rounded-2xl" />
               <Image
                 src="/headshot.jpg"
                 alt="Josh Holzhauser"
@@ -91,7 +91,7 @@ export default function AboutPage() {
                 sizes="(max-width: 768px) 288px, 320px"
               />
               {/* Overlay badge */}
-              <div className="absolute bottom-4 left-4 right-4 bg-[#0A0E1A]/90 backdrop-blur-sm border border-[#1E2A3A] rounded-xl px-4 py-3">
+              <div className="absolute bottom-4 left-4 right-4 bg-[#07080B]/90 backdrop-blur-sm border border-[#1B1F2A] rounded-xl px-4 py-3">
                 <p className="text-sm font-semibold text-[#F9FAFB]">Josh Holzhauser</p>
                 <p className="text-xs text-[#9CA3AF]">Full-Stack Developer · Builder</p>
               </div>
@@ -101,14 +101,14 @@ export default function AboutPage() {
 
         {/* Values */}
         <FadeIn className="mb-5">
-          <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">How I work</p>
+          <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">How I work</p>
           <h2 className="text-3xl font-bold text-[#F9FAFB] mb-12">What makes me different</h2>
         </FadeIn>
         <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           {values.map(({ icon: Icon, title, desc }) => (
             <StaggerItem key={title}>
-              <div className="bg-[#111827] border border-[#1E2A3A] rounded-2xl p-7">
-                <Icon className="w-5 h-5 text-[#3B82F6] mb-4" />
+              <div className="bg-[#101319] border border-[#1B1F2A] rounded-2xl p-7">
+                <Icon className="w-5 h-5 text-[#5B8DEF] mb-4" />
                 <h3 className="text-base font-semibold text-[#F9FAFB] mb-2">{title}</h3>
                 <p className="text-sm text-[#9CA3AF] leading-relaxed">{desc}</p>
               </div>
@@ -118,7 +118,7 @@ export default function AboutPage() {
 
         {/* Skills — animated */}
         <FadeIn className="mb-10">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#3B82F6]">Technical Stack</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#5B8DEF]">Technical Stack</p>
           <h2 className="mb-10 text-3xl font-bold text-[#F9FAFB]">Stack I trust in production</h2>
           <SkillsGraph />
         </FadeIn>

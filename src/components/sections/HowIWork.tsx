@@ -8,7 +8,7 @@ const steps = [
     title: 'Discovery Call',
     description:
       'You send me what you\'ve got — a rough idea, a process you hate, a spreadsheet you\'re embarrassed by. I ask the questions. You don\'t write a spec.',
-    color: '#3B82F6',
+    color: '#5B8DEF',
   },
   {
     step: '02',
@@ -38,10 +38,10 @@ const steps = [
 
 export default function HowIWork() {
   return (
-    <section className="py-24 px-6 bg-[#111827]/30">
+    <section className="py-24 px-6 bg-[#101319]/30">
       <div className="max-w-6xl mx-auto">
         <FadeIn className="text-center mb-16">
-          <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">Process</p>
+          <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">Process</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#F9FAFB] mb-4">
             What working together looks like
           </h2>
@@ -53,10 +53,10 @@ export default function HowIWork() {
         <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map(({ step, icon: Icon, title, description, color }, i) => (
             <StaggerItem key={step}>
-              <div className="relative bg-[#111827] border border-[#1E2A3A] rounded-2xl p-7 h-full">
+              <div className="relative bg-[#101319] border border-[#1B1F2A] rounded-2xl p-7 h-full">
                 {/* Connector line on desktop */}
                 {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 left-full w-full h-px bg-gradient-to-r from-[#1E2A3A] to-transparent z-10" style={{ width: '100%' }} />
+                  <div className="hidden lg:block absolute top-10 left-full w-full h-px bg-gradient-to-r from-[#1B1F2A] to-transparent z-10" style={{ width: '100%' }} />
                 )}
                 <span className="text-xs font-mono text-[#6B7280] mb-4 block">{step}</span>
                 <div

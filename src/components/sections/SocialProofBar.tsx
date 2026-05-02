@@ -3,7 +3,7 @@ import { FadeIn } from '@/components/ui/FadeIn';
 
 export default function SocialProofBar() {
   return (
-    <section className="border-y border-[#1E2A3A] bg-[#111827]/50">
+    <section className="border-y border-[#1B1F2A] bg-[#101319]/50">
       <div className="max-w-6xl mx-auto px-6 py-10">
         <FadeIn>
           <p className="text-center text-xs text-[#6B7280] uppercase tracking-widest mb-8 font-medium">
@@ -28,7 +28,7 @@ export default function SocialProofBar() {
             </div>
           </FadeIn>
 
-          <div className="hidden md:block w-px h-10 bg-[#1E2A3A]" />
+          <div className="hidden md:block w-px h-10 bg-[#1B1F2A]" />
 
           {/* Stat */}
           <FadeIn delay={0.2}>
@@ -38,7 +38,7 @@ export default function SocialProofBar() {
             </div>
           </FadeIn>
 
-          <div className="hidden md:block w-px h-10 bg-[#1E2A3A]" />
+          <div className="hidden md:block w-px h-10 bg-[#1B1F2A]" />
 
           <FadeIn delay={0.3}>
             <div className="text-center">
@@ -47,7 +47,7 @@ export default function SocialProofBar() {
             </div>
           </FadeIn>
 
-          <div className="hidden md:block w-px h-10 bg-[#1E2A3A]" />
+          <div className="hidden md:block w-px h-10 bg-[#1B1F2A]" />
 
           <FadeIn delay={0.4}>
             <div className="text-center">

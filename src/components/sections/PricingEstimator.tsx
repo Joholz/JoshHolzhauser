@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const TYPES = [
-  { id: 'web',        label: 'Web Presence',    base: [800,  1500]  as [number, number], color: '#3B82F6', desc: 'Business site + lead capture' },
+  { id: 'web',        label: 'Web Presence',    base: [800,  1500]  as [number, number], color: '#5B8DEF', desc: 'Business site + lead capture' },
   { id: 'app',        label: 'Business App',    base: [2500, 6000]  as [number, number], color: '#06B6D4', desc: 'Custom workflow tool' },
   { id: 'automation', label: 'AI & Automation', base: [1500, 4000]  as [number, number], color: '#8B5CF6', desc: 'Automate manual work with AI' },
   { id: 'mobile',     label: 'Mobile App',      base: [3000, 7500]  as [number, number], color: '#F59E0B', desc: 'iOS + Android with Firebase' },
@@ -78,8 +78,8 @@ export function PricingEstimator() {
   const note = getNote(type.id, timeline.id, complexity.id);
 
   return (
-    <div className="relative mb-20 overflow-hidden rounded-3xl border border-[#1E2A3A] bg-[#111827]/70">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3B82F6] to-transparent" />
+    <div className="relative mb-20 overflow-hidden rounded-3xl border border-[#1B1F2A] bg-[#101319]/70">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#5B8DEF] to-transparent" />
 
       <div className="p-6 md:p-12">
         <div className="mb-10">
@@ -109,7 +109,7 @@ export function PricingEstimator() {
                 style={
                   type.id === t.id
                     ? { borderColor: t.color, color: t.color, background: `${t.color}14` }
-                    : { borderColor: '#1E2A3A', color: '#9CA3AF' }
+                    : { borderColor: '#1B1F2A', color: '#9CA3AF' }
                 }
               >
                 <span className="text-xs font-semibold">{t.label}</span>
@@ -132,8 +132,8 @@ export function PricingEstimator() {
                 onClick={() => setTimeline(t)}
                 className={`rounded-xl border px-5 py-3 text-left transition-all duration-200 ${
                   timeline.id === t.id
-                    ? 'border-[#3B82F6] bg-[#3B82F6]/14 text-[#DBEAFE]'
-                    : 'border-[#1E2A3A] text-[#9CA3AF] hover:border-[#2a3a50]'
+                    ? 'border-[#5B8DEF] bg-[#5B8DEF]/14 text-[#DBEAFE]'
+                    : 'border-[#1B1F2A] text-[#9CA3AF] hover:border-[#262B38]'
                 }`}
               >
                 <span className="block text-xs font-semibold">{t.label}</span>
@@ -157,7 +157,7 @@ export function PricingEstimator() {
                 className={`rounded-xl border px-5 py-3 text-left transition-all duration-200 ${
                   complexity.id === c.id
                     ? 'border-[#06B6D4] bg-[#06B6D4]/14 text-[#CFFAFE]'
-                    : 'border-[#1E2A3A] text-[#9CA3AF] hover:border-[#2a3a50]'
+                    : 'border-[#1B1F2A] text-[#9CA3AF] hover:border-[#262B38]'
                 }`}
               >
                 <span className="block text-xs font-semibold">{c.label}</span>
@@ -175,7 +175,7 @@ export function PricingEstimator() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22 }}
-            className="rounded-2xl border border-[#1E2A3A] bg-[#0A0E1A] p-4 md:p-8"
+            className="rounded-2xl border border-[#1B1F2A] bg-[#07080B] p-4 md:p-8"
             style={{ boxShadow: `0 0 40px ${type.color}10` }}
           >
             <div className="flex flex-col gap-6 md:flex-row md:items-center">
@@ -197,7 +197,7 @@ export function PricingEstimator() {
               <div className="shrink-0">
                 <Link
                   href="/book"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#3B82F6] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#2563EB] hover:shadow-[0_0_24px_rgba(59,130,246,0.5)] md:w-auto"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#5B8DEF] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#4775D9] hover:shadow-[0_0_24px_rgba(91,141,239,0.5)] md:w-auto"
                 >
                   Lock in this scope
                   <ArrowRight className="w-4 h-4" />

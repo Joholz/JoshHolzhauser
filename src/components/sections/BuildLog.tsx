@@ -8,7 +8,7 @@ const ENTRIES = [
     phase:  'Design System First',
     time:   'Before any code',
     tag:    'Foundation',
-    color:  '#3B82F6',
+    color:  '#5B8DEF',
     detail: 'Locked the color palette, type scale, and motion rules in a single CSS file. No design tool, no separate handoff step — the constraint forces fast, consistent decisions.',
   },
   {
@@ -63,7 +63,7 @@ export function BuildLog() {
   return (
     <div ref={containerRef}>
       <div className="mb-12">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#3B82F6]">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#5B8DEF]">
           Engineering Log
         </p>
         <h2 className="text-3xl font-bold text-[#F9FAFB]">How this site was actually built.</h2>
@@ -74,10 +74,10 @@ export function BuildLog() {
 
       <div className="relative">
         {/* Static track */}
-        <div className="absolute bottom-3 left-[19px] top-3 w-px bg-[#1E2A3A]" />
+        <div className="absolute bottom-3 left-[19px] top-3 w-px bg-[#1B1F2A]" />
         {/* Animated fill */}
         <motion.div
-          className="absolute left-[19px] top-3 w-px origin-top bg-gradient-to-b from-[#3B82F6] to-[#10B981]"
+          className="absolute left-[19px] top-3 w-px origin-top bg-gradient-to-b from-[#5B8DEF] to-[#10B981]"
           style={{ height: lineHeight }}
         />
 
@@ -95,12 +95,12 @@ export function BuildLog() {
                 className="absolute left-[13px] top-1.5 h-[13px] w-[13px] rounded-full border-2"
                 style={{
                   borderColor:     entry.color,
-                  backgroundColor: '#0A0E1A',
+                  backgroundColor: '#07080B',
                   boxShadow:       `0 0 0 4px ${entry.color}20`,
                 }}
               />
 
-              <div className="rounded-xl border border-[#1E2A3A] bg-[#111827]/60 p-5 transition-colors hover:border-[#2a3a50]">
+              <div className="rounded-xl border border-[#1B1F2A] bg-[#101319]/60 p-5 transition-colors hover:border-[#262B38]">
                 <div className="mb-2 flex flex-wrap items-center gap-3">
                   <h3 className="font-semibold text-[#F9FAFB]">{entry.phase}</h3>
                   <span

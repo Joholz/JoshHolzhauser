@@ -22,7 +22,7 @@ export default function WhyJosh() {
     <section className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn className="text-center mb-14">
-          <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">Why Work With Me</p>
+          <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">Why Work With Me</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#F9FAFB] mb-4">
             The solo dev advantage
           </h2>
@@ -35,11 +35,11 @@ export default function WhyJosh() {
           {/* Mobile: cards */}
           <div className="md:hidden space-y-3">
             {comparisons.map(({ label, josh, agency, freelancer }) => (
-              <div key={label} className="rounded-xl border border-[#1E2A3A] bg-[#111827] p-4">
+              <div key={label} className="rounded-xl border border-[#1B1F2A] bg-[#101319] p-4">
                 <p className="text-sm text-[#E5E7EB] leading-snug mb-3">{label}</p>
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div>
-                    <p className="text-[11px] font-bold text-[#3B82F6] mb-1.5">Josh</p>
+                    <p className="text-[11px] font-bold text-[#5B8DEF] mb-1.5">Josh</p>
                     <Cell value={josh} />
                   </div>
                   <div>
@@ -56,13 +56,13 @@ export default function WhyJosh() {
           </div>
 
           {/* Desktop: table */}
-          <div className="hidden md:block overflow-x-auto rounded-2xl border border-[#1E2A3A]">
+          <div className="hidden md:block overflow-x-auto rounded-2xl border border-[#1B1F2A]">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-[#111827] border-b border-[#1E2A3A]">
+                <tr className="bg-[#101319] border-b border-[#1B1F2A]">
                   <th className="text-left px-6 py-4 text-[#6B7280] font-medium w-1/2">Feature</th>
                   <th className="px-6 py-4 text-center">
-                    <span className="text-[#3B82F6] font-bold text-sm">Josh</span>
+                    <span className="text-[#5B8DEF] font-bold text-sm">Josh</span>
                   </th>
                   <th className="px-6 py-4 text-center text-[#6B7280] font-medium">Agency</th>
                   <th className="px-6 py-4 text-center text-[#6B7280] font-medium">Avg Freelancer</th>
@@ -72,8 +72,8 @@ export default function WhyJosh() {
                 {comparisons.map(({ label, josh, agency, freelancer }, i) => (
                   <tr
                     key={label}
-                    className={`border-b border-[#1E2A3A] last:border-0 transition-colors hover:bg-[#111827]/50 ${
-                      i % 2 === 0 ? 'bg-[#0A0E1A]' : 'bg-[#0d111d]'
+                    className={`border-b border-[#1B1F2A] last:border-0 transition-colors hover:bg-[#101319]/50 ${
+                      i % 2 === 0 ? 'bg-[#07080B]' : 'bg-[#0B0D12]'
                     }`}
                   >
                     <td className="px-6 py-4 text-[#9CA3AF]">{label}</td>

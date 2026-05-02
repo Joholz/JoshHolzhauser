@@ -82,7 +82,7 @@ export default function BookPage() {
             I&apos;ll review what you sent and get back to you within 24 hours. If it looks like a good fit,
             I&apos;ll reach out to set up a call.
           </p>
-          <Link href="/" className="text-sm text-[#3B82F6] hover:text-[#60A5FA] transition-colors">
+          <Link href="/" className="text-sm text-[#5B8DEF] hover:text-[#86A8FF] transition-colors">
             ← Back to home
           </Link>
         </div>
@@ -110,9 +110,9 @@ export default function BookPage() {
             {step === 3 && "How do I reach you?"}
           </h1>
           <p className="text-[#6B7280] text-sm">Step {step} of 3</p>
-          <div className="mt-4 h-1 bg-[#1E2A3A] rounded-full overflow-hidden">
+          <div className="mt-4 h-1 bg-[#1B1F2A] rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#3B82F6] rounded-full transition-all duration-500"
+              className="h-full bg-[#5B8DEF] rounded-full transition-all duration-500"
               style={{ width: `${(step / 3) * 100}%` }}
             />
           </div>
@@ -127,11 +127,11 @@ export default function BookPage() {
                 onClick={() => { setProjectType(id); setStep(2); }}
                 className={`text-left p-5 rounded-2xl border transition-all duration-200 hover:-translate-y-0.5 ${
                   projectType === id
-                    ? 'border-[#3B82F6] bg-[#3B82F6]/10'
-                    : 'border-[#1E2A3A] bg-[#111827] hover:border-[#2a3a50]'
+                    ? 'border-[#5B8DEF] bg-[#5B8DEF]/10'
+                    : 'border-[#1B1F2A] bg-[#101319] hover:border-[#262B38]'
                 }`}
               >
-                <Icon className="w-5 h-5 text-[#3B82F6] mb-3" />
+                <Icon className="w-5 h-5 text-[#5B8DEF] mb-3" />
                 <p className="text-sm font-semibold text-[#F9FAFB] mb-1">{label}</p>
                 <p className="text-xs text-[#6B7280] leading-snug">{sub}</p>
               </button>
@@ -151,7 +151,7 @@ export default function BookPage() {
                 onChange={e => setMessage(e.target.value)}
                 placeholder="Plain language is fine. The rougher the idea, the better — that's what I'm here for."
                 rows={5}
-                className="w-full bg-[#111827] border border-[#1E2A3A] focus:border-[#3B82F6] rounded-xl px-4 py-3 text-sm text-[#F9FAFB] placeholder-[#4B5563] outline-none transition-colors resize-none"
+                className="w-full bg-[#101319] border border-[#1B1F2A] focus:border-[#5B8DEF] rounded-xl px-4 py-3 text-sm text-[#F9FAFB] placeholder-[#4B5563] outline-none transition-colors resize-none"
               />
             </div>
 
@@ -164,8 +164,8 @@ export default function BookPage() {
                     onClick={() => setBudget(id)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
                       budget === id
-                        ? 'border-[#3B82F6] bg-[#3B82F6]/10 text-[#60A5FA]'
-                        : 'border-[#1E2A3A] text-[#9CA3AF] hover:border-[#2a3a50] hover:text-[#F9FAFB]'
+                        ? 'border-[#5B8DEF] bg-[#5B8DEF]/10 text-[#86A8FF]'
+                        : 'border-[#1B1F2A] text-[#9CA3AF] hover:border-[#262B38] hover:text-[#F9FAFB]'
                     }`}
                   >
                     {label}
@@ -183,8 +183,8 @@ export default function BookPage() {
                     onClick={() => setTimeline(id)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
                       timeline === id
-                        ? 'border-[#3B82F6] bg-[#3B82F6]/10 text-[#60A5FA]'
-                        : 'border-[#1E2A3A] text-[#9CA3AF] hover:border-[#2a3a50] hover:text-[#F9FAFB]'
+                        ? 'border-[#5B8DEF] bg-[#5B8DEF]/10 text-[#86A8FF]'
+                        : 'border-[#1B1F2A] text-[#9CA3AF] hover:border-[#262B38] hover:text-[#F9FAFB]'
                     }`}
                   >
                     {label}
@@ -196,14 +196,14 @@ export default function BookPage() {
             <div className="flex gap-3">
               <button
                 onClick={() => setStep(1)}
-                className="px-5 py-3 rounded-xl border border-[#1E2A3A] text-[#9CA3AF] hover:text-[#F9FAFB] hover:border-[#2a3a50] transition-all text-sm"
+                className="px-5 py-3 rounded-xl border border-[#1B1F2A] text-[#9CA3AF] hover:text-[#F9FAFB] hover:border-[#262B38] transition-all text-sm"
               >
                 ← Back
               </button>
               <button
                 onClick={() => setStep(3)}
                 disabled={!message.trim()}
-                className="flex-1 flex items-center justify-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-xl transition-all text-sm"
+                className="flex-1 flex items-center justify-center gap-2 bg-[#5B8DEF] hover:bg-[#4775D9] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-xl transition-all text-sm"
               >
                 Next <ArrowRight className="w-4 h-4" />
               </button>
@@ -233,7 +233,7 @@ export default function BookPage() {
                   value={name}
                   onChange={e => setName(e.target.value)}
                   placeholder="First name is fine"
-                  className="w-full bg-[#111827] border border-[#1E2A3A] focus:border-[#3B82F6] rounded-xl px-4 py-3 text-sm text-[#F9FAFB] placeholder-[#4B5563] outline-none transition-colors"
+                  className="w-full bg-[#101319] border border-[#1B1F2A] focus:border-[#5B8DEF] rounded-xl px-4 py-3 text-sm text-[#F9FAFB] placeholder-[#4B5563] outline-none transition-colors"
                 />
               </div>
               <div>
@@ -243,7 +243,7 @@ export default function BookPage() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full bg-[#111827] border border-[#1E2A3A] focus:border-[#3B82F6] rounded-xl px-4 py-3 text-sm text-[#F9FAFB] placeholder-[#4B5563] outline-none transition-colors"
+                  className="w-full bg-[#101319] border border-[#1B1F2A] focus:border-[#5B8DEF] rounded-xl px-4 py-3 text-sm text-[#F9FAFB] placeholder-[#4B5563] outline-none transition-colors"
                 />
               </div>
             </div>
@@ -258,7 +258,7 @@ export default function BookPage() {
                 onChange={e => setExtra(e.target.value)}
                 placeholder="Links, references, constraints — anything that feels relevant."
                 rows={3}
-                className="w-full bg-[#111827] border border-[#1E2A3A] focus:border-[#3B82F6] rounded-xl px-4 py-3 text-sm text-[#F9FAFB] placeholder-[#4B5563] outline-none transition-colors resize-none"
+                className="w-full bg-[#101319] border border-[#1B1F2A] focus:border-[#5B8DEF] rounded-xl px-4 py-3 text-sm text-[#F9FAFB] placeholder-[#4B5563] outline-none transition-colors resize-none"
               />
             </div>
 
@@ -267,14 +267,14 @@ export default function BookPage() {
             <div className="flex gap-3">
               <button
                 onClick={() => setStep(2)}
-                className="px-5 py-3 rounded-xl border border-[#1E2A3A] text-[#9CA3AF] hover:text-[#F9FAFB] hover:border-[#2a3a50] transition-all text-sm"
+                className="px-5 py-3 rounded-xl border border-[#1B1F2A] text-[#9CA3AF] hover:text-[#F9FAFB] hover:border-[#262B38] transition-all text-sm"
               >
                 ← Back
               </button>
               <button
                 onClick={handleSubmit}
                 disabled={!name.trim() || !email.trim() || submitting}
-                className="flex-1 flex items-center justify-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-xl transition-all text-sm"
+                className="flex-1 flex items-center justify-center gap-2 bg-[#5B8DEF] hover:bg-[#4775D9] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-xl transition-all text-sm"
               >
                 {submitting
                   ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending…</>

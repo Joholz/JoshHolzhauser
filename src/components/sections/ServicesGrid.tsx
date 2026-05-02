@@ -8,7 +8,7 @@ const services = [
     title: 'Web Applications',
     description:
       'Custom web apps built from your vision with minimal briefing needed. Forms, dashboards, integrations — fully functional and deployed.',
-    color: '#3B82F6',
+    color: '#5B8DEF',
   },
   {
     icon: Cpu,
@@ -38,7 +38,7 @@ export default function ServicesGrid() {
     <section className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn className="text-center mb-16">
-          <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">What I Build</p>
+          <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">What I Build</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#F9FAFB] mb-4">
             One developer. Full stack.
           </h2>
@@ -50,7 +50,7 @@ export default function ServicesGrid() {
         <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {services.map(({ icon: Icon, title, description, color }) => (
             <StaggerItem key={title}>
-              <div className="group relative bg-[#111827] border border-[#1E2A3A] hover:border-[#2a3a50] rounded-2xl p-7 transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.07)] hover:-translate-y-1">
+              <div className="group relative bg-[#101319] border border-[#1B1F2A] hover:border-[#262B38] rounded-2xl p-7 transition-all duration-300 hover:shadow-[0_0_40px_rgba(91,141,239,0.07)] hover:-translate-y-1">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
                   style={{ background: `${color}18` }}
@@ -67,7 +67,7 @@ export default function ServicesGrid() {
         <FadeIn delay={0.2} className="text-center mt-12">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-sm text-[#3B82F6] hover:text-[#60A5FA] transition-colors font-medium"
+            className="inline-flex items-center gap-2 text-sm text-[#5B8DEF] hover:text-[#86A8FF] transition-colors font-medium"
           >
             See all services & pricing
             <ArrowRight className="w-4 h-4" />

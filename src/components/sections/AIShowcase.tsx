@@ -29,7 +29,7 @@ const PHASES: Phase[] = [
     filename: 'plan.ts',
     title: 'A real plan, not a guess.',
     outcome: 'Fixed scope. Fixed timeline. Fixed price.',
-    color: '#3B82F6',
+    color: '#5B8DEF',
   },
   {
     id: 'build',
@@ -108,8 +108,8 @@ function CodePanel({
   });
 
   return (
-    <div className="overflow-hidden rounded-xl border border-[#1E2A3A] bg-[#0A0E1A] shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-      <div className="flex items-center gap-1.5 border-b border-[#1E2A3A] bg-[#111827] px-3 py-2">
+    <div className="overflow-hidden rounded-xl border border-[#1B1F2A] bg-[#07080B] shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+      <div className="flex items-center gap-1.5 border-b border-[#1B1F2A] bg-[#101319] px-3 py-2">
         <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
@@ -164,14 +164,14 @@ function PlanPreview({ progress }: { progress: MotionValue<number> }) {
   });
 
   return (
-    <div className="rounded-xl border border-[#1E2A3A] bg-[#0F1623] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:p-6">
+    <div className="rounded-xl border border-[#1B1F2A] bg-[#0E1117] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:p-6">
       <div className="mb-4 flex items-start justify-between">
         <div>
           <p className="text-[10px] uppercase tracking-widest text-[#6B7280]">Project plan</p>
           <p className="text-sm font-semibold text-[#F9FAFB] md:text-base">Engler Contracting</p>
         </div>
-        <div className="rounded-md border border-[#3B82F6]/30 bg-[#3B82F6]/10 px-2 py-1">
-          <span className="font-mono text-[11px] text-[#3B82F6]">$6,500</span>
+        <div className="rounded-md border border-[#5B8DEF]/30 bg-[#5B8DEF]/10 px-2 py-1">
+          <span className="font-mono text-[11px] text-[#5B8DEF]">$6,500</span>
         </div>
       </div>
       <div className="space-y-1.5 md:space-y-2">
@@ -181,9 +181,9 @@ function PlanPreview({ progress }: { progress: MotionValue<number> }) {
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: i < step ? 1 : 0, x: i < step ? 0 : -8 }}
             transition={{ duration: 0.32, ease: 'easeOut' }}
-            className="flex items-center gap-3 rounded-lg border border-[#1E2A3A] bg-[#0A0E1A] px-3 py-2"
+            className="flex items-center gap-3 rounded-lg border border-[#1B1F2A] bg-[#07080B] px-3 py-2"
           >
-            <div className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#3B82F6]" />
+            <div className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#5B8DEF]" />
             <div className="min-w-0 flex-1">
               <p className="truncate text-xs text-[#E5E7EB] md:text-sm">{item.name}</p>
               <p className="font-mono text-[9px] text-[#6B7280] md:text-[10px]">{item.dates}</p>
@@ -196,7 +196,7 @@ function PlanPreview({ progress }: { progress: MotionValue<number> }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= items.length ? 1 : 0 }}
         transition={{ duration: 0.4 }}
-        className="mt-4 flex items-center justify-between border-t border-[#1E2A3A] pt-3"
+        className="mt-4 flex items-center justify-between border-t border-[#1B1F2A] pt-3"
       >
         <span className="text-[11px] text-[#9CA3AF] md:text-xs">8 weeks · ships Jul 26</span>
         <span className="flex items-center gap-1.5 text-[11px] text-[#10B981] md:text-xs">
@@ -219,7 +219,7 @@ function BuildPreview({ progress }: { progress: MotionValue<number> }) {
   });
 
   return (
-    <div className="rounded-xl border border-[#1E2A3A] bg-[#0F1623] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:p-6">
+    <div className="rounded-xl border border-[#1B1F2A] bg-[#0E1117] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:p-6">
       <div className="mb-3 flex items-center justify-between">
         <p className="text-[10px] uppercase tracking-widest text-[#6B7280]">Live preview</p>
         <motion.span
@@ -233,11 +233,11 @@ function BuildPreview({ progress }: { progress: MotionValue<number> }) {
       </div>
 
       <motion.div
-        className="overflow-hidden rounded-xl border bg-[#0A0E1A]"
-        animate={{ borderColor: stage >= 1 ? '#06B6D4' : '#1E2A3A' }}
+        className="overflow-hidden rounded-xl border bg-[#07080B]"
+        animate={{ borderColor: stage >= 1 ? '#06B6D4' : '#1B1F2A' }}
         transition={{ duration: 0.3 }}
       >
-        <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-[#1E2A3A] to-[#0F1623]">
+        <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-[#1B1F2A] to-[#0E1117]">
           <motion.div
             className="absolute inset-0"
             initial={{ opacity: 0 }}
@@ -245,7 +245,7 @@ function BuildPreview({ progress }: { progress: MotionValue<number> }) {
             transition={{ duration: 0.5 }}
             style={{
               background:
-                'linear-gradient(135deg, rgba(6,182,212,0.4) 0%, rgba(59,130,246,0.3) 50%, rgba(16,185,129,0.3) 100%)',
+                'linear-gradient(135deg, rgba(6,182,212,0.4) 0%, rgba(91,141,239,0.3) 50%, rgba(16,185,129,0.3) 100%)',
             }}
           />
           {stage < 2 && (
@@ -305,7 +305,7 @@ function BuildPreview({ progress }: { progress: MotionValue<number> }) {
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: stage >= 5 ? 1 : 0, y: stage >= 5 ? 0 : 4 }}
             transition={{ duration: 0.3 }}
-            className="rounded-lg bg-[#06B6D4] px-3 py-1.5 text-[11px] font-semibold text-[#0A0E1A] md:px-4 md:py-2 md:text-xs"
+            className="rounded-lg bg-[#06B6D4] px-3 py-1.5 text-[11px] font-semibold text-[#07080B] md:px-4 md:py-2 md:text-xs"
           >
             View site →
           </motion.button>
@@ -358,7 +358,7 @@ function ResultsPreview({ progress }: { progress: MotionValue<number> }) {
   const areaPath = `${path} L ${w} ${h} L 0 ${h} Z`;
 
   return (
-    <div className="rounded-xl border border-[#1E2A3A] bg-[#0F1623] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:p-6">
+    <div className="rounded-xl border border-[#1B1F2A] bg-[#0E1117] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:p-6">
       <div className="mb-4 flex items-start justify-between">
         <div>
           <p className="text-[10px] uppercase tracking-widest text-[#6B7280]">Last 30 days</p>
@@ -375,10 +375,10 @@ function ResultsPreview({ progress }: { progress: MotionValue<number> }) {
       <div className="mb-4 grid grid-cols-3 gap-1.5 md:gap-3">
         <Kpi label="Conversion" value={`${conv}%`}        color="#10B981" />
         <Kpi label="Page load"  value={`${load.toFixed(1)}s`} color="#06B6D4" />
-        <Kpi label="Bounce"     value={`${bounce}%`}      color="#3B82F6" />
+        <Kpi label="Bounce"     value={`${bounce}%`}      color="#5B8DEF" />
       </div>
 
-      <div className="rounded-lg border border-[#1E2A3A] bg-[#0A0E1A] p-2 md:p-3">
+      <div className="rounded-lg border border-[#1B1F2A] bg-[#07080B] p-2 md:p-3">
         <svg viewBox={`0 0 ${w} ${h + 8}`} className="h-16 w-full md:h-20" preserveAspectRatio="none">
           <defs>
             <linearGradient id="ai-results-area" x1="0" x2="0" y1="0" y2="1">
@@ -393,7 +393,7 @@ function ResultsPreview({ progress }: { progress: MotionValue<number> }) {
               x2={w}
               y1={(h / 3) * i + 4}
               y2={(h / 3) * i + 4}
-              stroke="#1E2A3A"
+              stroke="#1B1F2A"
               strokeWidth="0.5"
             />
           ))}
@@ -419,7 +419,7 @@ function ResultsPreview({ progress }: { progress: MotionValue<number> }) {
 
 function Kpi({ label, value, color }: { label: string; value: string; color: string }) {
   return (
-    <div className="rounded-lg border border-[#1E2A3A] bg-[#0A0E1A] px-2 py-2 md:px-3 md:py-3">
+    <div className="rounded-lg border border-[#1B1F2A] bg-[#07080B] px-2 py-2 md:px-3 md:py-3">
       <p className="mb-0.5 text-[9px] uppercase tracking-wider text-[#6B7280] md:text-[10px]">{label}</p>
       <p className="font-mono text-base font-bold tabular-nums md:text-xl" style={{ color }}>
         {value}
@@ -442,7 +442,7 @@ function ProgressRail({
   return (
     <div className="mb-5 px-2 md:mb-7 md:px-6">
       <div className="relative">
-        <div className="absolute left-0 right-0 top-[5px] h-px bg-[#1E2A3A]" />
+        <div className="absolute left-0 right-0 top-[5px] h-px bg-[#1B1F2A]" />
         <motion.div
           className="absolute left-0 top-[5px] h-px origin-left"
           style={{
@@ -461,7 +461,7 @@ function ProgressRail({
                   className="h-2.5 w-2.5 rounded-full border-2 md:h-3 md:w-3"
                   animate={{
                     borderColor: p.color,
-                    backgroundColor: reached ? p.color : '#0A0E1A',
+                    backgroundColor: reached ? p.color : '#07080B',
                     boxShadow: active ? `0 0 12px ${p.color}` : '0 0 0 rgba(0,0,0,0)',
                     scale: active ? 1.15 : 1,
                   }}
@@ -501,7 +501,7 @@ function Preview({ phaseIndex, progress }: { phaseIndex: number; progress: Motio
 function Header() {
   return (
     <FadeIn>
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#3B82F6]">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#5B8DEF]">
         How a build comes together
       </p>
       <h2 className="max-w-3xl text-3xl font-bold text-[#F9FAFB] md:text-5xl">
@@ -522,7 +522,7 @@ function ReducedMotionLayout() {
       {PHASES.map((phase, i) => (
         <div
           key={phase.id}
-          className="rounded-2xl border border-[#1E2A3A] bg-[#111827]/60 p-6"
+          className="rounded-2xl border border-[#1B1F2A] bg-[#101319]/60 p-6"
           style={{ borderTop: `2px solid ${phase.color}` }}
         >
           <div className="mb-3 flex items-center gap-3">
@@ -588,7 +588,7 @@ export default function AIShowcase() {
     <section className="relative px-6 py-24">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-20 h-80 w-80 -translate-x-1/2 rounded-full bg-[#06B6D4]/10 blur-3xl" />
-        <div className="absolute bottom-12 right-8 h-56 w-56 rounded-full bg-[#3B82F6]/10 blur-3xl" />
+        <div className="absolute bottom-12 right-8 h-56 w-56 rounded-full bg-[#5B8DEF]/10 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-4xl">

@@ -28,9 +28,9 @@ const caseStudies = [
   {
     id: 'engler',
     tag: 'Business · Web',
-    tagColor: '#3B82F6',
+    tagColor: '#5B8DEF',
     status: 'Live at englercontracting.com',
-    statusColor: '#3B82F6',
+    statusColor: '#5B8DEF',
     title: 'Engler Contracting — Business Website',
     problem:
       'Engler Contracting & Consulting, a professional tree service and contracting company, had no online presence. They needed a full website that reflected their professionalism, helped customers find them, and captured incoming leads — all from a minimal brief.',
@@ -83,7 +83,7 @@ export default function PortfolioPage() {
             <ArrowLeft className="w-4 h-4" />
             Back to home
           </Link>
-          <p className="text-xs text-[#3B82F6] uppercase tracking-widest font-semibold mb-3">Portfolio</p>
+          <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">Portfolio</p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#F9FAFB] mb-4">
             Three builds. Different industries. All running.
           </h1>
@@ -97,9 +97,9 @@ export default function PortfolioPage() {
         <Stagger className="space-y-12">
           {caseStudies.map(({ id, tag, tagColor, status, statusColor, title, problem, solution, results, tech, link }) => (
             <StaggerItem key={id}>
-              <div id={id} className="bg-[#111827] border border-[#1E2A3A] rounded-2xl overflow-hidden">
+              <div id={id} className="bg-[#101319] border border-[#1B1F2A] rounded-2xl overflow-hidden">
                 {/* Header bar */}
-                <div className="px-8 py-6 border-b border-[#1E2A3A] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="px-8 py-6 border-b border-[#1B1F2A] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <span
                       className="text-xs font-semibold px-2.5 py-1 rounded-full"
@@ -119,7 +119,7 @@ export default function PortfolioPage() {
                       href={link}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-[#3B82F6] hover:text-[#60A5FA] transition-colors font-medium"
+                      className="inline-flex items-center gap-1.5 text-xs text-[#5B8DEF] hover:text-[#86A8FF] transition-colors font-medium"
                     >
                       View live site
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -151,7 +151,7 @@ export default function PortfolioPage() {
                         {tech.map(t => (
                           <span
                             key={t}
-                            className="text-xs font-mono bg-[#1a2332] border border-[#1E2A3A] text-[#6B7280] px-2.5 py-1 rounded-md"
+                            className="text-xs font-mono bg-[#171A22] border border-[#1B1F2A] text-[#6B7280] px-2.5 py-1 rounded-md"
                           >
                             {t}
                           </span>
@@ -183,7 +183,7 @@ export default function PortfolioPage() {
           <p className="text-[#9CA3AF] mb-6">Have a project like one of these?</p>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] text-sm"
+            className="inline-flex items-center gap-2 bg-[#5B8DEF] hover:bg-[#4775D9] text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(91,141,239,0.4)] text-sm"
           >
             Book a Free Discovery Call →
           </Link>

@@ -71,7 +71,7 @@ const BURST_FORCE  = 0.28;   // impulse at wavefront
 const BURST_LIFE   = 750;    // ms before burst is removed
 
 // Colour palette
-const COLOR_A = new THREE.Color('#3B82F6'); // blue  (primary)
+const COLOR_A = new THREE.Color('#5B8DEF'); // blue  (primary)
 const COLOR_B = new THREE.Color('#06B6D4'); // cyan  (accent)
 const COLOR_C = new THREE.Color('#0d1929'); // near-black — visible against bg
 

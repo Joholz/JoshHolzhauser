@@ -84,7 +84,7 @@ export function ScrollNav({ labels = LABELS }: { labels?: string[] }) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 8 }}
                 transition={{ duration: 0.12 }}
-                className="pointer-events-none absolute right-6 whitespace-nowrap rounded-md border border-[#1E2A3A] bg-[#111827]/95 px-2.5 py-1 text-xs text-[#F9FAFB] backdrop-blur-sm"
+                className="pointer-events-none absolute right-6 whitespace-nowrap rounded-md border border-[#1B1F2A] bg-[#101319]/95 px-2.5 py-1 text-xs text-[#F9FAFB] backdrop-blur-sm"
               >
                 {label}
               </motion.span>
@@ -105,8 +105,8 @@ export function ScrollNav({ labels = LABELS }: { labels?: string[] }) {
               style={{
                 width:           i === active ? 10 : 6,
                 height:          i === active ? 10 : 6,
-                backgroundColor: i === active ? '#3B82F6' : '#2a3a50',
-                boxShadow:       i === active ? '0 0 10px rgba(59,130,246,0.7)' : 'none',
+                backgroundColor: i === active ? '#5B8DEF' : '#262B38',
+                boxShadow:       i === active ? '0 0 10px rgba(91,141,239,0.7)' : 'none',
               }}
             />
           </button>

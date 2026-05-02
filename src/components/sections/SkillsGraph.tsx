@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion';
 const STACK = [
   {
     category: 'Frontend',
-    color: '#3B82F6',
+    color: '#5B8DEF',
     skills: ['React', 'Next.js', 'React Native', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
   },
   {
@@ -36,7 +36,7 @@ export function SkillsGraph() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: catIdx * 0.12, duration: 0.5, ease: EASE }}
           whileHover={{ boxShadow: `0 0 40px ${cat.color}18`, borderColor: `${cat.color}40` }}
-          className="rounded-2xl border border-[#1E2A3A] bg-[#111827] p-7 transition-colors"
+          className="rounded-2xl border border-[#1B1F2A] bg-[#101319] p-7 transition-colors"
         >
           <div className="mb-6 flex items-center gap-2.5">
             <span
@@ -64,7 +64,7 @@ export function SkillsGraph() {
                   boxShadow: `0 0 12px ${cat.color}28`,
                   transition: { duration: 0.12 },
                 }}
-                className="cursor-default rounded-md border border-[#1E2A3A] bg-[#1a2332] px-2.5 py-1.5 font-mono text-xs text-[#6B7280]"
+                className="cursor-default rounded-md border border-[#1B1F2A] bg-[#171A22] px-2.5 py-1.5 font-mono text-xs text-[#6B7280]"
               >
                 {skill}
               </motion.span>

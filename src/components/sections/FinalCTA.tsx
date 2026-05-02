@@ -7,10 +7,10 @@ export default function FinalCTA() {
     <section className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <div className="relative bg-gradient-to-br from-[#111827] to-[#0d1520] border border-[#1E2A3A] rounded-3xl px-8 md:px-16 py-16 text-center overflow-hidden">
+          <div className="relative bg-gradient-to-br from-[#101319] to-[#0E111A] border border-[#1B1F2A] rounded-3xl px-8 md:px-16 py-16 text-center overflow-hidden">
             {/* Glow */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-96 h-96 bg-[#3B82F6]/8 rounded-full blur-[80px]" />
+              <div className="w-96 h-96 bg-[#5B8DEF]/8 rounded-full blur-[80px]" />
             </div>
 
             <div className="relative">
@@ -26,7 +26,7 @@ export default function FinalCTA() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="/book"
-                  className="group flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] text-sm w-full sm:w-auto justify-center"
+                  className="group flex items-center gap-2 bg-[#5B8DEF] hover:bg-[#4775D9] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(91,141,239,0.5)] text-sm w-full sm:w-auto justify-center"
                 >
                   Tell me about your project
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
