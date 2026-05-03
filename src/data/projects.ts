@@ -144,7 +144,7 @@ export const projects: Project[] = [
     featured: true,
     tag: 'Mobile + Web · Public Data',
     tagColor: '#F59E0B',
-    status: 'Live on Google Play and Vercel',
+    status: 'Live on Google Play and web',
     statusColor: '#F59E0B',
     tech: [
       'React Native 0.81',
@@ -163,7 +163,7 @@ export const projects: Project[] = [
     caseStudy: {
       preview: {
         description:
-          'An offline-capable property lookup over 310k+ Polk County, FL public records — published as both a React Native app on Google Play and a browser app on Vercel that runs SQLite in WebAssembly.',
+          'An offline-capable property lookup over 310k+ Polk County, FL public records — published as both a React Native app on Google Play and a browser app that runs SQLite in WebAssembly.',
         tech: ['React Native', 'sql.js (WASM)', 'SQLite', 'Vercel'],
       },
       problem:
@@ -173,7 +173,7 @@ export const projects: Project[] = [
       results: [
         '310k+ records searchable offline on mobile',
         'Browser app runs SQLite in WebAssembly — zero backend',
-        'Published on Google Play and live on Vercel',
+        'Published on Google Play and live on the web',
         'Fuzzy owner / address matching for field work',
         'Same data layer powers both surfaces',
         'HTML parsing pipeline keeps the dataset current',
@@ -191,7 +191,6 @@ export const projects: Project[] = [
     tech: ['React Native 0.76', 'Expo SDK 52', 'Firebase', 'Expo Router', 'React Native Paper', 'LLM integration'],
     publications: [
       { kind: 'playstore', href: 'https://play.google.com/store/apps/details?id=com.joholz.CookBookPal' },
-      { kind: 'github', href: 'https://github.com/Joholz/CookBookPal' },
     ],
     caseStudy: {
       preview: {
@@ -205,7 +204,6 @@ export const projects: Project[] = [
         'A full React Native app on Expo, running on iOS and Android. Recipe drafting via LLM from a prompt, web scraping to import recipes from any URL, Firebase Firestore for real-time cross-device sync, and a dedicated cook mode that walks users through each step without distraction. Currently being refreshed under the name Marigold — the existing Play Store listing still resolves under the previous name during the transition.',
       results: [
         'Published on Google Play under previous name (link still resolves)',
-        'Source available on GitHub',
         'iOS and Android from one React Native codebase',
         'Recipe drafting via LLM from a prompt',
         'URL-based recipe import via web scraping',
@@ -260,7 +258,7 @@ export const projects: Project[] = [
     tier: 2,
     tag: 'Web · Booking',
     tagColor: '#5B8DEF',
-    status: 'Live on Vercel',
+    status: 'Live',
     statusColor: '#5B8DEF',
     tech: ['React 19', 'Vite', 'Supabase', 'react-calendar', 'date-fns', 'Tailwind'],
     publications: [{ kind: 'vercel', href: 'https://halitaily.vercel.app/' }],
@@ -290,9 +288,6 @@ export const projects: Project[] = [
     status: 'Open source',
     statusColor: '#8B5CF6',
     tech: ['Model Context Protocol', 'TypeScript', 'Python', 'Playwright', 'Express'],
-    publications: [
-      { kind: 'github', href: 'https://github.com/Joholz', label: 'Repos' },
-    ],
     lab: {
       blurb: 'Three Claude/MCP servers: a Simplified Technical English analyzer (TS), a Redmine issue manager (TS + Playwright), and an American Airlines award-flight finder (Python + headless Firefox).',
       highlight: '3 servers · TS + Python',
@@ -304,9 +299,10 @@ export const projects: Project[] = [
     tier: 2,
     tag: 'Web · Marketing',
     tagColor: '#F59E0B',
-    status: 'Portfolio piece',
+    status: 'Live',
     statusColor: '#F59E0B',
     tech: ['React 19', 'Vite', 'Tailwind', 'Framer Motion', 'React Router'],
+    publications: [{ kind: 'vercel', href: 'https://siphaus.vercel.app/' }],
     lab: {
       blurb: 'Curated drinks-menu site with sophisticated filtering and animation. Built as a brand-forward visual portfolio piece.',
     },

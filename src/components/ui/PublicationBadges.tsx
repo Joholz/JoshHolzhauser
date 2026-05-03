@@ -1,11 +1,11 @@
 import type { Publication, PublicationKind } from '@/data/projects';
 
 const LABELS: Record<PublicationKind, string> = {
-  vercel: 'Vercel',
+  vercel: 'Live Website',
   playstore: 'Google Play',
   github: 'GitHub',
   moodle: 'Moodle',
-  website: 'Live site',
+  website: 'Live Website',
 };
 
 function VercelMark() {
@@ -59,7 +59,7 @@ function WebsiteMark() {
 }
 
 const MARKS: Record<PublicationKind, () => React.ReactElement> = {
-  vercel: VercelMark,
+  vercel: WebsiteMark,
   playstore: PlayStoreMark,
   github: GitHubMark,
   moodle: MoodleMark,
