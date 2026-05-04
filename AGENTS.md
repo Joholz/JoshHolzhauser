@@ -139,7 +139,7 @@ src/
     utils.ts                 ← cn() helper (clsx + tailwind-merge)
 public/
   engler-logo.png            ← Engler Contracting ECC logo
-  headshot.jpg               ← Josh headshot (needs solo crop)
+  JoshBioPic.jpg               ← Josh headshot
 firestore.rules              ← Security rules (deploy with firebase CLI)
 firestore.indexes.json
 firebase.json
@@ -216,7 +216,7 @@ Each document written by the `/book` contact form:
 ### Before deploy
 - [ ] Complete Firebase Console setup (Firestore + Auth — see section 5)
 - [ ] Add `.env.local` variables to Vercel environment variables
-- [ ] Replace `/public/headshot.jpg` with solo cropped photo
+- [ ] Replace `/public/JoshBioPic.jpg` with solo cropped photo
 - [ ] Update Footer LinkedIn URL (currently `https://linkedin.com` placeholder)
 
 ### Deployment

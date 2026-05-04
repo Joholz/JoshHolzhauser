@@ -70,7 +70,7 @@ export default function AboutPage() {
             <div className="relative w-72 h-80 lg:w-80 lg:h-96">
               <div className="absolute inset-0 bg-gradient-to-br from-[#5B8DEF]/20 to-[#06B6D4]/10 rounded-2xl" />
               <Image
-                src="/headshot.jpg"
+                src="/JoshBioPic.jpg"
                 alt="Josh Holzhauser"
                 fill
                 className="object-cover object-top rounded-2xl"
