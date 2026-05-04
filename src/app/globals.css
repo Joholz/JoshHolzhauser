@@ -94,6 +94,15 @@ body {
   background-size: 60px 60px;
 }
 
+/* Tier card target highlight — when picker scrolls user to a card */
+.tier-card {
+  scroll-margin-top: 6rem;
+}
+.tier-card:target {
+  border-color: #5B8DEF !important;
+  box-shadow: 0 0 0 1px #5B8DEF, 0 0 40px rgba(91, 141, 239, 0.25);
+}
+
 /* Noise texture overlay */
 .noise::before {
   content: '';

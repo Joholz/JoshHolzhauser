@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const TYPES = [
-  { id: 'web',        label: 'Web Presence',    base: [800,  1500]  as [number, number], color: '#5B8DEF', desc: 'Business site + lead capture' },
-  { id: 'app',        label: 'Business App',    base: [2500, 6000]  as [number, number], color: '#06B6D4', desc: 'Custom workflow tool' },
-  { id: 'automation', label: 'AI & Automation', base: [1500, 4000]  as [number, number], color: '#8B5CF6', desc: 'Automate manual work with AI' },
-  { id: 'mobile',     label: 'Mobile App',      base: [3000, 7500]  as [number, number], color: '#F59E0B', desc: 'iOS + Android with Firebase' },
-  { id: 'saas',       label: 'Full SaaS',       base: [5000, 12000] as [number, number], color: '#10B981', desc: 'Auth · payments · admin · users' },
+  { id: 'web',        label: 'Website',         base: [800,  1500]  as [number, number], color: '#5B8DEF', desc: 'Brings in customers' },
+  { id: 'app',        label: 'Business tool',   base: [2500, 6000]  as [number, number], color: '#06B6D4', desc: 'Replaces paperwork and spreadsheets' },
+  { id: 'automation', label: 'Automation',      base: [1500, 4000]  as [number, number], color: '#8B5CF6', desc: 'Stop doing it by hand' },
+  { id: 'mobile',     label: 'Mobile app',      base: [3000, 7500]  as [number, number], color: '#F59E0B', desc: 'Downloaded from the App Store' },
+  { id: 'saas',       label: 'Product to sell', base: [5000, 12000] as [number, number], color: '#10B981', desc: 'Users, accounts, payments' },
 ];
 
 const TIMELINES = [
@@ -20,9 +20,9 @@ const TIMELINES = [
 ];
 
 const COMPLEXITY = [
-  { id: 'simple',   label: 'Simple',   desc: 'Clear scope, minimal integrations', mult: 0.75 },
-  { id: 'moderate', label: 'Moderate', desc: 'Custom logic, 1–2 APIs',             mult: 1.0  },
-  { id: 'complex',  label: 'Complex',  desc: 'Multi-system, custom workflows',     mult: 1.4  },
+  { id: 'simple',   label: 'Simple',   desc: 'Just a few features. Nothing fancy.',                       mult: 0.75 },
+  { id: 'moderate', label: 'Moderate', desc: 'Connects to a couple other tools — email, payments, calendar.', mult: 1.0  },
+  { id: 'complex',  label: 'Complex',  desc: 'Lots of moving parts. Multiple systems talking to each other.',  mult: 1.4  },
 ];
 
 function useAnimatedNumber(value: number) {

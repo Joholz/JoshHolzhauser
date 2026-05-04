@@ -6,11 +6,11 @@ import { ArrowRight, Terminal, Zap, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const TYPED_STRINGS = [
-  'web applications',
-  'automation systems',
-  'LLM-backed tools',
-  'SaaS products',
-  'business software',
+  'websites',
+  'custom tools',
+  'automations',
+  'mobile apps',
+  'software',
 ];
 
 function Typewriter() {
@@ -87,7 +87,7 @@ export default function Hero() {
           I build&nbsp;
           <Typewriter />
           <br />
-          <span className="gradient-text">so you don&apos;t need a team.</span>
+          <span className="gradient-text">that fit your business.</span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -97,8 +97,8 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.35 }}
           className="max-w-2xl mx-auto text-lg text-[#9CA3AF] leading-relaxed mb-10"
         >
-          From insurance SaaS to mobile apps to business automation — I take your idea from zero to
-          launched, then keep it running and improving over time.
+          From a small business website to a custom tool to a product you sell — I take rough ideas
+          and turn them into things people actually use, then keep them running as you grow.
         </motion.p>
 
         {/* CTAs */}

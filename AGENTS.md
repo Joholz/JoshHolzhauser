@@ -10,7 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 > **This is the single source of truth for every AI coding session on this project.**
 > Read it fully before touching a file. Update it whenever something changes — architecture, decisions, copy rules, pending tasks. An outdated agents.md causes drift. Keeping it current is as important as keeping the code clean.
-> **Last updated: 2026-05-04 (pricing UX refresh — "Starting at" framing, 30-day warranty, retainer reframe)**
+> **Last updated: 2026-05-04 (pricing UX refresh + audience clarity — "Starting at" framing, 30-day warranty, retainer reframe, plain-English tier names, goal picker, cross-routing)**
 
 ---
 
@@ -254,16 +254,32 @@ git add . && git commit -m "Initial website build" && git push origin main
 - **All seller-side pricing uses "Starting at $X" framing** — never a range with an upper bound. Ranges create anchoring resentment (buyers latch onto the low end) and make future price increases awkward. Each tier pairs the floor with a "What pushes it up" caption so the transparency promise survives. Buyer-side budget brackets in `/book` and `/admin` are unaffected — those are user-input categories, not quotes.
 - **30-day fix-it warranty** ships with every one-time build tier — anything that breaks within 30 days of launch is fixed at no charge. New features and scope changes are explicitly out of scope and route to the retainer.
 - **Maintenance retainer is reviewed quarterly** — `Starting at $250/mo` with explicit "adjusted to actual load" language. Protects both sides from the same anchoring problem on the recurring side: if a SaaS turns out to need $1,500/mo of real attention, there's a built-in moment to renegotiate without resentment.
+- **Audience is non-technical SMB owners and first-time founders** — they don't know "web app" vs "mobile app" vs "SaaS" vs "LLM". Entry-point copy (Hero, services tier names, calculator inputs, book form, homepage service grid) speaks **goals**, not technologies. Tech terms are allowed deeper in the funnel — case study tech tags, About page — where the buyer has opted into more detail. The 1:1 vocabulary mapping between Hero typewriter, services tier names, and calculator type buttons is intentional — same five outcomes everywhere so the buyer's mental model carries from page to page.
+- **Services page has three on-ramps** — a goal-picker (one-click → scroll-to-tier with `:target` highlight via globals.css `.tier-card:target`), a calculator (interactive scope explorer), and the tier cards themselves (direct browse). Each tier card carries a `crossRoute` field that actively steers misrouted buyers to the correct tier — surfaces the one-button escape hatch on every card instead of relying on the buyer to re-scan the wall.
 
 ---
 
 ## 9. Brand Voice
 
 - Direct, confident, no fluff
-- "I build X so you don't need a team"
+- "I build X that fits your business" — the canonical hero line. Cooperative framing, not competitive against the buyer's own people. (Earlier "so you don't need a team" was retired 2026-05-04 — read as antagonistic toward existing staff when the actual target was agencies.)
 - Solo developer advantage: speed, full ownership, long-term relationships
 - Lead with real specifics: named client projects, real tech, real outcomes
 - CTAs describe the action, not the outcome: "Tell me about your project" not "Start your journey"
+
+### Plain language ≠ dumbed down
+The audience doesn't speak developer. Drop the jargon at every entry point, but stay in voice — direct, specific, with a point of view. Plain doesn't mean generic.
+
+| ❌ Jargon (or generic) | ✅ Plain + in-voice |
+|---|---|
+| `AI & Automation Package` | `Stop doing it by hand` |
+| `Custom Business App` | `A tool that runs your business` |
+| `SaaS MVP Build` | `Build something you can sell` |
+| `Web Presence` | `Get found online` |
+| `Complexity: Custom logic, 1–2 APIs` | `Connects to a couple other tools — email, payments, calendar` |
+| `End-to-end SaaS builds` (generic) | `User accounts, payments, the whole stack` (concrete) |
+
+Both columns are short. The right column wins because it names the buyer's goal in the buyer's words, not the developer's deliverable in the developer's words.
 
 ---
 
@@ -283,6 +299,7 @@ git add . && git commit -m "Initial website build" && git push origin main
 | `small uppercase label → h2 → gray subtitle` on every single section | Rotating or dropping the subtitle is fine; repeating the identical structure on every section is not |
 | `"Real problems. Real solutions."` | Meaningless rhyming pair |
 | `"[adj] · [adj] · [adj] capability"` | Tag stacking with no substance |
+| Developer vocabulary at the *first* point of contact (`SaaS`, `LLM`, `web app`, `API integration`, `full stack` as a buyer-facing label) | Audience doesn't speak this language. Tech terms are fine deeper in the funnel (case study tech tags, About page) once the buyer has opted in — banned in Hero, services tier names, calculator inputs, book form, and homepage service grid |
 
 ### What good copy looks like on this site
 - **Specific beats generic.** "A spreadsheet you're embarrassed by" is better than "existing systems."

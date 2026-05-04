@@ -8,10 +8,10 @@ import { db } from '@/lib/firebase';
 
 const PROJECT_TYPES = [
   { id: 'website',    icon: Globe,          label: 'Need a website',       sub: 'Business site, landing page, portfolio' },
-  { id: 'app',        icon: Cpu,            label: 'Custom web app',       sub: 'Dashboard, tool, internal system' },
-  { id: 'automation', icon: Zap,            label: 'Automate something',   sub: 'API integrations, workflows, data sync' },
-  { id: 'mobile',     icon: Smartphone,     label: 'Mobile app',           sub: 'iOS + Android, React Native' },
-  { id: 'saas',       icon: Layers,         label: 'Start a SaaS',         sub: 'Payments, auth, the full thing' },
+  { id: 'app',        icon: Cpu,            label: 'A tool for my business', sub: 'Replaces spreadsheets, paperwork, manual tracking' },
+  { id: 'automation', icon: Zap,            label: 'Automate something',   sub: 'Daily reports, syncing data, repeating tasks' },
+  { id: 'mobile',     icon: Smartphone,     label: 'Mobile app',           sub: 'iOS and Android, downloaded from the stores' },
+  { id: 'saas',       icon: Layers,         label: 'A product I want to sell', sub: 'Users, accounts, payments, the whole thing' },
   { id: 'unsure',     icon: MessageCircle,  label: "Not sure yet",         sub: 'Just want to think it through' },
 ];
 

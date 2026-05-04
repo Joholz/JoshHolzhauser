@@ -5,30 +5,30 @@ import { FadeIn, Stagger, StaggerItem } from '@/components/ui/FadeIn';
 const services = [
   {
     icon: Globe,
-    title: 'Web Applications',
+    title: 'Websites & business tools',
     description:
-      'Custom web apps built from your vision with minimal briefing needed. Forms, dashboards, integrations — fully functional and deployed.',
+      'A website that brings in customers, or a custom tool that runs your operation. Built around how you actually work, not a template.',
     color: '#5B8DEF',
   },
   {
     icon: Cpu,
-    title: 'AI & Automation',
+    title: 'Stop doing it by hand',
     description:
-      'Workflow automation and LLM-backed tools that eliminate manual work. API integrations, data pipelines, smart notifications.',
+      'Daily reports, invoice chasing, data syncing — repetitive work turned into something that runs itself. With or without an AI step.',
     color: '#06B6D4',
   },
   {
     icon: Smartphone,
-    title: 'Mobile Apps',
+    title: 'Apps for phones',
     description:
-      'React Native mobile apps with LLM capabilities, real-time data, and solid UX. Built for iOS and Android from a single codebase.',
+      "Real iOS and Android apps. One codebase, both stores. Like the property records app I built that's live on Google Play.",
     color: '#8B5CF6',
   },
   {
     icon: Layers,
-    title: 'SaaS Products',
+    title: 'Products you can sell',
     description:
-      'End-to-end SaaS builds. I maintain, improve, and scale your product over time.',
+      'User accounts, payments, the whole stack. I build the product you can show paying customers on day one.',
     color: '#10B981',
   },
 ];
@@ -40,10 +40,11 @@ export default function ServicesGrid() {
         <FadeIn className="text-center mb-16">
           <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">What I Build</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#F9FAFB] mb-4">
-            One developer. Full stack.
+            One developer. The whole thing.
           </h2>
           <p className="text-[#9CA3AF] max-w-xl mx-auto">
-            Most projects don&apos;t need five people. They need one person who knows the full stack and actually sticks around.
+            Most projects don&apos;t need five people. They need one person who can build the whole thing
+            and still be there a year later.
           </p>
         </FadeIn>
 
