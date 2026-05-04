@@ -3,10 +3,23 @@ import { ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { FadeIn, Stagger, StaggerItem } from '@/components/ui/FadeIn';
 import { PricingEstimator } from '@/components/sections/PricingEstimator';
 
-const tiers = [
+type Tier = {
+  name: string;
+  price: string;
+  type: string;
+  color: string;
+  description: string;
+  features: string[];
+  pushedBy: string;
+  afterLaunch?: string;
+  cta: string;
+  highlight: boolean;
+};
+
+const tiers: Tier[] = [
   {
     name: 'Business Web Presence',
-    price: '$800–$1,500',
+    price: 'Starting at $800',
     type: 'One-time',
     color: '#5B8DEF',
     description:
@@ -18,13 +31,16 @@ const tiers = [
       'Mobile responsive & fast',
       'Hosting setup included',
       'Basic SEO configuration',
+      '30-day fix-it warranty included',
     ],
+    pushedBy: 'More pages, custom integrations, ecommerce, multi-language',
+    afterLaunch: 'Ongoing care optional, from $250/mo.',
     cta: 'Get a Website',
     highlight: false,
   },
   {
     name: 'Custom Business App',
-    price: '$2,500–$6,000',
+    price: 'Starting at $2,500',
     type: 'One-time',
     color: '#06B6D4',
     description:
@@ -36,31 +52,34 @@ const tiers = [
       'Secure forms & data handling',
       'Email notification systems',
       'Admin dashboard & workflows',
+      '30-day fix-it warranty included',
     ],
+    pushedBy: 'Number of user roles, third-party APIs, reporting depth, data volume',
+    afterLaunch: 'Ongoing care optional, from $250/mo.',
     cta: 'Build My App',
     highlight: true,
   },
   {
     name: 'Maintenance Retainer',
-    price: '$200–$500',
-    type: 'Per month',
+    price: 'Starting at $250',
+    type: 'Per month, scope reviewed quarterly',
     color: '#10B981',
     description:
-      'Ongoing maintenance, improvements, and feature additions for your existing product. I keep your system healthy and growing.',
+      "Most products grow after launch — new features, integrations, the small things you didn't know you'd want. The retainer covers ongoing improvements, monitoring, and the unglamorous upkeep that keeps your stack healthy.",
     features: [
-      'Bug fixes & security patches',
-      'New feature development',
-      'Performance monitoring',
+      'Improvements, small features, dependency upkeep',
+      'Performance & uptime monitoring',
       'Priority response time',
       'Monthly progress updates',
-      'Scales with your needs',
+      'Reviewed every 3 months — adjusted to actual load, no surprise bills',
     ],
+    pushedBy: 'Stack complexity, change frequency, response-time SLA, how actively users hit it',
     cta: 'Start a Retainer',
     highlight: false,
   },
   {
     name: 'AI & Automation Package',
-    price: '$1,500–$4,000',
+    price: 'Starting at $1,500',
     type: 'One-time',
     color: '#8B5CF6',
     description:
@@ -72,13 +91,16 @@ const tiers = [
       'Automated notifications',
       'Google Sheets / Drive integrations',
       'ROI estimate before build',
+      '30-day fix-it warranty included',
     ],
+    pushedBy: 'Number of systems wired together, model choice, volume of data processed',
+    afterLaunch: 'Ongoing care optional, from $250/mo.',
     cta: 'Automate My Business',
     highlight: false,
   },
   {
     name: 'SaaS MVP Build',
-    price: '$5,000–$12,000',
+    price: 'Starting at $5,000',
     type: 'One-time + optional retainer',
     color: '#F59E0B',
     description:
@@ -90,7 +112,10 @@ const tiers = [
       'Admin & user dashboards',
       'Deployment & CI/CD setup',
       'Optional ongoing retainer',
+      '30-day fix-it warranty included',
     ],
+    pushedBy: 'Multi-tenant, complex billing, role permissions, custom analytics',
+    afterLaunch: 'Ongoing care optional, from $250/mo.',
     cta: 'Build My SaaS',
     highlight: false,
   },
@@ -111,11 +136,11 @@ export default function ServicesPage() {
           </Link>
           <p className="text-xs text-[#5B8DEF] uppercase tracking-widest font-semibold mb-3">Services</p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#F9FAFB] mb-4">
-            What I build — and what it costs.
+            What I build — and where it starts.
           </h1>
           <p className="text-[#9CA3AF] text-lg max-w-2xl">
-            Transparent pricing. No hidden fees. Every engagement starts with a free 30-minute discovery call
-            where we scope exactly what you need.
+            Transparent pricing. No hidden fees. Every price below is a starting point — the final number
+            depends on scope, which we lock in on a free 30-minute call.
           </p>
         </FadeIn>
 
@@ -129,7 +154,7 @@ export default function ServicesPage() {
 
         {/* Tiers grid */}
         <Stagger className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {tiers.map(({ name, price, type, color, description, features, cta, highlight }) => (
+          {tiers.map(({ name, price, type, color, description, features, pushedBy, afterLaunch, cta, highlight }) => (
             <StaggerItem key={name}>
               <div
                 className={`relative flex flex-col h-full bg-[#101319] border rounded-2xl p-8 transition-all duration-300 ${
@@ -155,12 +180,15 @@ export default function ServicesPage() {
 
                 <h2 className="text-lg font-bold text-[#F9FAFB] mb-1">{name}</h2>
                 <p className="text-xs text-[#6B7280] mb-4">{type}</p>
-                <p className="text-3xl font-bold mb-1" style={{ color }}>
+                <p className="text-3xl font-bold mb-2" style={{ color }}>
                   {price}
+                </p>
+                <p className="text-xs text-[#6B7280] mb-5 leading-relaxed">
+                  <span className="text-[#9CA3AF]">What pushes it up:</span> {pushedBy}
                 </p>
                 <p className="text-sm text-[#9CA3AF] mb-6 leading-relaxed">{description}</p>
 
-                <div className="space-y-2.5 flex-1 mb-8">
+                <div className="space-y-2.5 flex-1 mb-6">
                   {features.map(f => (
                     <div key={f} className="flex items-start gap-2.5">
                       <CheckCircle className="w-4 h-4 mt-0.5 shrink-0" style={{ color }} />
@@ -168,6 +196,14 @@ export default function ServicesPage() {
                     </div>
                   ))}
                 </div>
+
+                {afterLaunch && (
+                  <div className="mb-6 pt-4 border-t border-[#1B1F2A]">
+                    <p className="text-xs text-[#6B7280]">
+                      <span className="text-[#9CA3AF] font-medium">After launch:</span> {afterLaunch}
+                    </p>
+                  </div>
+                )}
 
                 <Link
                   href="/book"
@@ -186,8 +222,17 @@ export default function ServicesPage() {
           ))}
         </Stagger>
 
+        {/* Warranty footnote */}
+        <FadeIn delay={0.15} className="mt-10 max-w-2xl mx-auto">
+          <p className="text-xs text-[#6B7280] leading-relaxed text-center">
+            <span className="text-[#9CA3AF] font-medium">30-day fix-it warranty:</span> anything I built that
+            breaks within 30 days of launch, I fix at no charge. Doesn&apos;t cover new features or scope
+            changes — that&apos;s what the retainer is for.
+          </p>
+        </FadeIn>
+
         {/* Note */}
-        <FadeIn delay={0.2} className="mt-12 text-center">
+        <FadeIn delay={0.2} className="mt-8 text-center">
           <p className="text-sm text-[#6B7280]">
             Not sure which tier fits?{' '}
             <Link href="/book" className="text-[#5B8DEF] hover:text-[#86A8FF] transition-colors font-medium">

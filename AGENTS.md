@@ -10,7 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 > **This is the single source of truth for every AI coding session on this project.**
 > Read it fully before touching a file. Update it whenever something changes — architecture, decisions, copy rules, pending tasks. An outdated agents.md causes drift. Keeping it current is as important as keeping the code clean.
-> **Last updated: 2026-05-02 (portfolio expansion)**
+> **Last updated: 2026-05-04 (pricing UX refresh — "Starting at" framing, 30-day warranty, retainer reframe)**
 
 ---
 
@@ -228,7 +228,7 @@ git add . && git commit -m "Initial website build" && git push origin main
 
 ### Future features
 - [x] Signature Home timeline in `src/components/sections/AIShowcase.tsx` (implemented 2026-05-01)
-- [ ] Services page interactive estimator in `src/app/services/page.tsx`
+- [x] Services page interactive estimator in `src/app/services/page.tsx` (implemented; refactored 2026-05-04 to "Starting at" framing)
 - [ ] About page capability visualization in `src/app/about/page.tsx`
 - [ ] `src/app/not-found.tsx` — custom 404
 - [ ] `src/app/sitemap.ts` + `robots.ts` — SEO
@@ -251,6 +251,9 @@ git add . && git commit -m "Initial website build" && git push origin main
 - **Framer Motion `ease` arrays** need explicit `as [number,number,number,number]` cast
 - **AIShowcase** is a scroll-synced split-view: a fake code editor on the left types out source while a live preview on the right assembles the matching UI piece-by-piece. Three phases (Plan / Build / Result) on a sticky stage with a progress rail. Mobile stacks the two panels vertically and shrinks the code editor. Reduced-motion users get a static three-card fallback. No external AI APIs called.
 - **Admin route** is not protected at the routing level — Firebase Auth on the client handles access. For a low-traffic personal site this is sufficient.
+- **All seller-side pricing uses "Starting at $X" framing** — never a range with an upper bound. Ranges create anchoring resentment (buyers latch onto the low end) and make future price increases awkward. Each tier pairs the floor with a "What pushes it up" caption so the transparency promise survives. Buyer-side budget brackets in `/book` and `/admin` are unaffected — those are user-input categories, not quotes.
+- **30-day fix-it warranty** ships with every one-time build tier — anything that breaks within 30 days of launch is fixed at no charge. New features and scope changes are explicitly out of scope and route to the retainer.
+- **Maintenance retainer is reviewed quarterly** — `Starting at $250/mo` with explicit "adjusted to actual load" language. Protects both sides from the same anchoring problem on the recurring side: if a SaaS turns out to need $1,500/mo of real attention, there's a built-in moment to renegotiate without resentment.
 
 ---
 

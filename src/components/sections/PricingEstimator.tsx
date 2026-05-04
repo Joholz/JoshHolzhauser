@@ -54,7 +54,7 @@ function getNote(typeId: string, timelineId: string, complexityId: string): stri
     return 'Rush + complex scope is achievable but requires locking every deliverable before day one. Start with a call to define the edge cases.';
   }
   if (typeId === 'saas') {
-    return 'SaaS ranges are starting points. The exact number sharpens after a 30-minute scope call — most of what you think is "complex" has a simpler path.';
+    return 'SaaS scope sharpens fast on a 30-minute call — most of what you think is "complex" has a simpler path. The number above is the floor; multi-tenant, custom billing, or deep analytics push it up.';
   }
   if (timelineId === 'flexible' && complexityId === 'simple') {
     return 'Best-case scenario. Clean scope and no deadline pressure means a polished result with nothing cut. This is the easiest engagement to run.';
@@ -62,7 +62,7 @@ function getNote(typeId: string, timelineId: string, complexityId: string): stri
   if (typeId === 'automation') {
     return 'Automation projects often surface more opportunity once the workflow is mapped. Budget some buffer for the "I didn\'t know we could fix that too" moments.';
   }
-  return 'This estimate sharpens significantly after a 30-minute call. No obligation — just a conversation about what\'s actually in scope.';
+  return 'This number sharpens significantly after a 30-minute call. No obligation — just a conversation about what\'s actually in scope.';
 }
 
 export function PricingEstimator() {
@@ -70,11 +70,9 @@ export function PricingEstimator() {
   const [timeline,   setTimeline]   = useState(TIMELINES[1]);
   const [complexity, setComplexity] = useState(COMPLEXITY[1]);
 
-  const rawLow  = Math.round(type.base[0] * timeline.mult * complexity.mult / 100) * 100;
-  const rawHigh = Math.round(type.base[1] * timeline.mult * complexity.mult / 100) * 100;
+  const rawLow = Math.round(type.base[0] * timeline.mult * complexity.mult / 100) * 100;
 
   const low  = useAnimatedNumber(rawLow);
-  const high = useAnimatedNumber(rawHigh);
   const note = getNote(type.id, timeline.id, complexity.id);
 
   return (
@@ -181,15 +179,12 @@ export function PricingEstimator() {
             <div className="flex flex-col gap-6 md:flex-row md:items-center">
               <div className="flex-1">
                 <p className="mb-2 font-mono text-xs uppercase tracking-wider text-[#6B7280]">
-                  Estimated range &mdash; {type.label} &middot; {timeline.label} &middot; {complexity.label}
+                  Starting at &mdash; {type.label} &middot; {timeline.label} &middot; {complexity.label}
                 </p>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-bold sm:text-4xl md:text-5xl" style={{ color: type.color }}>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-sm font-medium text-[#6B7280]">from</span>
+                  <span className="text-3xl font-bold sm:text-4xl md:text-5xl" style={{ color: type.color }}>
                     ${low.toLocaleString()}
-                  </span>
-                  <span className="mx-1 text-xl font-light text-[#475569] sm:text-2xl">&ndash;</span>
-                  <span className="text-2xl font-bold sm:text-4xl md:text-5xl" style={{ color: type.color }}>
-                    ${high.toLocaleString()}
                   </span>
                 </div>
                 <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#9CA3AF]">{note}</p>
