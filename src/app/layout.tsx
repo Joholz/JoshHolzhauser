@@ -19,15 +19,37 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const SITE_URL = "https://joshholzhauser.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Josh Holzhauser — Full-Stack Developer & Builder",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Josh Holzhauser — Full-Stack Developer & Builder",
+    template: "%s · Josh Holzhauser",
+  },
   description:
-    "I build custom web apps, automations, and LLM-backed tools for businesses. Concept to deployed product — maintained and improved over time.",
-  keywords: ["full-stack developer", "web app development", "automation", "SaaS", "AI development", "custom software"],
+    "Solo developer building custom websites, business tools, automations, and SaaS products. Concept to deployed — maintained over time.",
+  alternates: { canonical: "/" },
+  authors: [{ name: "Josh Holzhauser", url: SITE_URL }],
+  creator: "Josh Holzhauser",
   openGraph: {
-    title: "Josh Holzhauser — Full-Stack Developer & Builder",
-    description: "I build apps, automations, and AI tools so you don't have to hire a team.",
     type: "website",
+    siteName: "Josh Holzhauser",
+    url: SITE_URL,
+    title: "Josh Holzhauser — Full-Stack Developer & Builder",
+    description:
+      "Solo developer building custom websites, business tools, automations, and SaaS products. Concept to deployed — maintained over time.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Josh Holzhauser — Full-Stack Developer & Builder",
+    description:
+      "Solo developer building custom websites, business tools, automations, and SaaS products.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 
@@ -42,6 +64,38 @@ export default function RootLayout({
       className={`${inter.variable} ${geistMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-[#07080B] text-[#F9FAFB] antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Josh Holzhauser",
+                url: SITE_URL,
+                jobTitle: "Full-Stack Developer",
+                description:
+                  "Solo developer building custom websites, business tools, automations, and SaaS products.",
+                knowsAbout: [
+                  "Web Development",
+                  "Mobile Development",
+                  "SaaS",
+                  "Automation",
+                  "AI Integration",
+                  "Next.js",
+                  "TypeScript",
+                  "Firebase",
+                ],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Josh Holzhauser",
+                url: SITE_URL,
+              },
+            ]),
+          }}
+        />
         {/* Custom cursor — replaces system cursor on pointer devices */}
         <MagneticCursor />
         {/* Global WebGL particle field — fixed behind all content */}

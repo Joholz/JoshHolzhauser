@@ -1,7 +1,22 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { FadeIn, Stagger, StaggerItem } from '@/components/ui/FadeIn';
 import { PricingEstimator } from '@/components/sections/PricingEstimator';
+
+export const metadata: Metadata = {
+  title: 'Services & Pricing',
+  description:
+    'Transparent starting prices for websites, business tools, automations, mobile apps, and SaaS builds. 30-day fix-it warranty on every one-time build.',
+  alternates: { canonical: '/services' },
+  openGraph: {
+    title: 'Services & Pricing · Josh Holzhauser',
+    description:
+      'Transparent starting prices for websites, business tools, automations, mobile apps, and SaaS builds.',
+    url: '/services',
+    images: ['/opengraph-image'],
+  },
+};
 
 type Tier = {
   id: string;

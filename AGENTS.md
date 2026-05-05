@@ -10,7 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 > **This is the single source of truth for every AI coding session on this project.**
 > Read it fully before touching a file. Update it whenever something changes — architecture, decisions, copy rules, pending tasks. An outdated agents.md causes drift. Keeping it current is as important as keeping the code clean.
-> **Last updated: 2026-05-04 (pricing UX refresh + audience clarity — "Starting at" framing, 30-day warranty, retainer reframe, plain-English tier names, goal picker, cross-routing)**
+> **Last updated: 2026-05-05 (SEO + discoverability pass — sitemap, robots, per-page metadata, OG image, JSON-LD Person/WebSite/Article, case studies split to `/portfolio/[slug]`, custom 404, /admin noindex)**
 
 ---
 
@@ -187,14 +187,16 @@ Each document written by the `/book` contact form:
 
 ### Tier 1 — Case Studies (6)
 
-| ID                        | Title                                              | Featured | Publications                          |
-|---------------------------|----------------------------------------------------|----------|---------------------------------------|
-| `#insurance-ops`          | Insurance Ops Platform (anonymized client)         | ✓        | None (private)                        |
-| `#engler`                 | Engler Contracting — Business Website              | ✓        | englercontracting.com                 |
-| `#enterprise-ai-platform` | Enterprise AI Orchestration Platform (anonymized)  | ✓        | None (private)                        |
-| `#polklookup`             | PolkLookup — Property Records (Mobile + Web)       | ✓        | Vercel + Google Play                  |
-| `#marigold`               | Marigold — Recipe App (formerly CookBookPal)       |          | Google Play + GitHub                  |
-| `#moodle-stack`           | Moodle — Custom Plugins & Container Stack          |          | Moodle badge                          |
+Each tier-1 project has its own indexable URL at `/portfolio/<slug>` (rendered by `src/app/portfolio/[slug]/page.tsx` with `generateStaticParams` + `generateMetadata`). The `/portfolio` index now renders summary cards that link into the slug pages — anchor links (`/portfolio#engler`) are gone.
+
+| Slug URL                            | Title                                              | Featured | Publications                          |
+|-------------------------------------|----------------------------------------------------|----------|---------------------------------------|
+| `/portfolio/insurance-ops`          | Insurance Ops Platform (anonymized client)         | ✓        | None (private)                        |
+| `/portfolio/engler`                 | Engler Contracting — Business Website              | ✓        | englercontracting.com                 |
+| `/portfolio/enterprise-ai-platform` | Enterprise AI Orchestration Platform (anonymized)  | ✓        | None (private)                        |
+| `/portfolio/polklookup`             | PolkLookup — Property Records (Mobile + Web)       | ✓        | Vercel + Google Play                  |
+| `/portfolio/marigold`               | Marigold — Recipe App (formerly CookBookPal)       |          | Google Play + GitHub                  |
+| `/portfolio/moodle-stack`           | Moodle — Custom Plugins & Container Stack          |          | Moodle badge                          |
 
 ### Tier 2 — Lab Grid (6)
 
@@ -229,14 +231,20 @@ git add . && git commit -m "Initial website build" && git push origin main
 ### Future features
 - [x] Signature Home timeline in `src/components/sections/AIShowcase.tsx` (implemented 2026-05-01)
 - [x] Services page interactive estimator in `src/app/services/page.tsx` (implemented; refactored 2026-05-04 to "Starting at" framing)
+- [x] `src/app/not-found.tsx` — custom 404 (implemented 2026-05-05)
+- [x] `src/app/sitemap.ts` + `robots.ts` — SEO (implemented 2026-05-05; sitemap enumerates all 6 case-study slug URLs)
 - [ ] About page capability visualization in `src/app/about/page.tsx`
-- [ ] `src/app/not-found.tsx` — custom 404
-- [ ] `src/app/sitemap.ts` + `robots.ts` — SEO
 - [ ] Email notification when a new lead is submitted (Resend, 3k/mo free)
 - [ ] Blog with MDX
-- [ ] Vercel Analytics (enable in Vercel dashboard)
 - [ ] Google Analytics 4
 - [ ] LinkedIn URL for Footer
+
+### SEO standby items — blocked on user input
+*Added 2026-05-05 after the SEO pass. Do not act on these without explicit user confirmation each time. The user is aware these are open and will signal when to proceed.*
+
+- [ ] **Custom domain decision.** Site currently lives at `https://joshholzhauser.vercel.app` — `SITE_URL` constant is hardcoded in 4 files: [src/app/layout.tsx](src/app/layout.tsx), [src/app/robots.ts](src/app/robots.ts), [src/app/sitemap.ts](src/app/sitemap.ts), [src/app/opengraph-image.tsx](src/app/opengraph-image.tsx). When the user buys `joshholzhauser.com` / `.app` / similar, update all 4 constants. User considering wildcard subdomain pattern (`tool.joshholzhauser.app`, `customwebsite.joshholzhauser.app`) for sibling Vercel projects — root domain still goes to this portfolio site. Hobby plan supports unlimited custom subdomains.
+- [ ] **Vercel Analytics install.** ~3-min job: `npm install @vercel/analytics`, drop `<Analytics />` in [src/app/layout.tsx](src/app/layout.tsx), enable in Vercel dashboard. Free tier on Hobby = 2,500 events/mo. Optional — user has not committed.
+- [ ] **Google Search Console setup.** Defer until *after* the custom domain is live, so the GSC property is verified once against the canonical domain (avoid migrating properties later). Verification via DNS TXT record on the Vercel-managed domain → submit `https://<domain>/sitemap.xml`. This is the more important of the two analytics tools for SEO specifically.
 
 ---
 
@@ -256,6 +264,7 @@ git add . && git commit -m "Initial website build" && git push origin main
 - **Maintenance retainer is reviewed quarterly** — `Starting at $250/mo` with explicit "adjusted to actual load" language. Protects both sides from the same anchoring problem on the recurring side: if a SaaS turns out to need $1,500/mo of real attention, there's a built-in moment to renegotiate without resentment.
 - **Audience is non-technical SMB owners and first-time founders** — they don't know "web app" vs "mobile app" vs "SaaS" vs "LLM". Entry-point copy (Hero, services tier names, calculator inputs, book form, homepage service grid) speaks **goals**, not technologies. Tech terms are allowed deeper in the funnel — case study tech tags, About page — where the buyer has opted into more detail. The 1:1 vocabulary mapping between Hero typewriter, services tier names, and calculator type buttons is intentional — same five outcomes everywhere so the buyer's mental model carries from page to page.
 - **Services page has three on-ramps** — a goal-picker (one-click → scroll-to-tier with `:target` highlight via globals.css `.tier-card:target`), a calculator (interactive scope explorer), and the tier cards themselves (direct browse). Each tier card carries a `crossRoute` field that actively steers misrouted buyers to the correct tier — surfaces the one-button escape hatch on every card instead of relying on the buyer to re-scan the wall.
+- **SEO architecture (2026-05-05).** Each public page exports its own `metadata` (unique `title`, `description`, `alternates.canonical`, and `openGraph` with `images: ['/opengraph-image']` — Next overrides parent `openGraph` wholesale, so children must re-attach the image). Root layout owns `metadataBase`, the title template `'%s · Josh Holzhauser'`, twitter card defaults, and JSON-LD `Person` + `WebSite` schemas. Each `/portfolio/[slug]` page emits its own JSON-LD `Article` schema. `'use client'` pages (`/book`, `/admin`) get metadata via a sibling `layout.tsx`. `/admin` is `noindex,nofollow` via metadata *and* disallowed in `robots.ts` (belt + suspenders). The OG image is rendered from JSX at edge runtime via `src/app/opengraph-image.tsx` — no static asset to maintain. **Do not** re-introduce anchor links like `/portfolio#engler` — case studies are now individually indexable URLs and each one's ranking equity depends on the dedicated route.
 
 ---
 

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, Code2, Zap, Users } from 'lucide-react';
@@ -5,6 +6,20 @@ import { ArrowRight, ArrowLeft, Code2, Zap, Users } from 'lucide-react';
 import { FadeIn, Stagger, StaggerItem } from '@/components/ui/FadeIn';
 import { SkillsGraph } from '@/components/sections/SkillsGraph';
 import { BuildLog } from '@/components/sections/BuildLog';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    "How I work, what I've built, and why I run this as a one-person shop. Solo developer with end-to-end ownership across web, mobile, automation, and SaaS.",
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About · Josh Holzhauser',
+    description:
+      'Solo developer with end-to-end ownership across web, mobile, automation, and SaaS.',
+    url: '/about',
+    images: ['/opengraph-image'],
+  },
+};
 
 const values = [
   { icon: Code2, title: 'I own the entire build',    desc: 'No handoffs between design, dev, and QA. I take it from concept to deployed — faster and with fewer broken phones.' },

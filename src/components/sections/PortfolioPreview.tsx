@@ -41,7 +41,7 @@ export default function PortfolioPreview() {
     wins: PREVIEW_WINS[p.id] ?? [],
     tech: p.caseStudy?.preview?.tech ?? p.tech,
     publications: p.publications as Publication[] | undefined,
-    href: `/portfolio#${p.id}`,
+    href: `/portfolio/${p.id}`,
   }));
   return (
     <section className="py-24 px-6 bg-[#101319]/30">
