@@ -60,7 +60,6 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-[#1B1F2A] flex flex-col sm:flex-row justify-between items-center gap-2">
           <p className="text-xs text-[#6B7280]">© {year} Josh Holzhauser. All rights reserved.</p>
-          <p className="text-xs text-[#6B7280]">Built with Next.js · Deployed on Vercel</p>
         </div>
       </div>
     </footer>

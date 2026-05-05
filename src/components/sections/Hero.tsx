@@ -7,10 +7,10 @@ import { motion } from 'framer-motion';
 
 const TYPED_STRINGS = [
   'websites',
-  'custom tools',
+  'business tools',
   'automations',
   'mobile apps',
-  'software',
+  'solutions',
 ];
 
 function Typewriter() {
@@ -87,7 +87,7 @@ export default function Hero() {
           I build&nbsp;
           <Typewriter />
           <br />
-          <span className="gradient-text">that fit your business.</span>
+          <span className="gradient-text">that work for you.</span>
         </motion.h1>
 
         {/* Subheadline */}
